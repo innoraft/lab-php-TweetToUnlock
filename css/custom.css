@@ -97,55 +97,10 @@ a:hover{
 	bottom: 2px;
 	left: 43px;
 }
-
-@media screen and (max-width:1200px) {
-	.color-fill {
-		left: 14px;
-	}
-}
-
-@media screen and (max-width:992px) {
-
-	.tree-col {
-		overflow-x: hidden;
-	}
-	.color-fill {
-		left: 14px;
-		width: 89%;	
-	}
-
-	img.tree-img {
-    width: 100%;
-}
-
-}
-
-@media screen and (max-width:767px) {
-		img.tree-img {
-    width: auto;
-}
-
-.color-fill {
-		left: 50%;
-		width: 395px;
-		transform: translateX(-51%);
-		-webkit-transform: translateX(-51%);
-		-moz-transform: translateX(-51%);	
-	}
-
-	}
-
-@media screen and (max-width:480px) {
-		img.tree-img {
-    width: 100%;
-}
-
 .color-fill {
 		
-		width: 89.6%;	
+		width: 98.6%;	
 	}
-
-}	
 
 
 .counter-div{
@@ -237,28 +192,6 @@ p{
 	font-family: "Oswald";
 	font-size: 22px;
 }
-.typewriter h1 {
-  overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: .15em solid #adc244; /* The typwriter cursor */
-  white-space: nowrap; /* Keeps the content on a single line */
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  /*letter-spacing: .15em;*/ /* Adjust as needed */
-  animation: 
-    typing 3.5s steps(40, end),
-    blink-caret .75s step-end infinite;
-}
-
-/* The typing effect */
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-/* The typewriter cursor effect */
-@keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: #adc244; }
-}
 
 h1{
 	font-size: 36px;
@@ -277,13 +210,13 @@ h1{
 }
 
 .social ul li:nth-child(2) a {
-    color: #4fbfa8;
+	color: #063452;
     cursor: pointer;
 }
 
 .social ul li:nth-child(2) i {
     font-size: 2em;
-    color: #4fbfa8;
+    color: #063452;
     cursor: pointer;
 }
 
@@ -293,6 +226,7 @@ h1{
 
 .cr{
 	margin-top: 30px;
+	color: grey;
 }
 
 .footer-head{
@@ -302,8 +236,8 @@ h1{
 .tree-col{
 	text-align: center;
 }
-.responsive h1{
-	text-align: center;
+.responsive h4{
+	/*text-align: center;*/
 
 }
 
@@ -312,10 +246,11 @@ h1{
 	margin-bottom: 20px;
 }
 
-@media only screen (min-width: 320px;) and (max-width: 479px;) {
+@media only screen and (max-width: 479px) {
 
 	.twitter-btn{
 		padding: 15px 30px;
+		font-size: 22px;
 	}
 .facebook-btn{
 	padding: 15px 24px;
@@ -323,6 +258,13 @@ h1{
 .linkedin-btn{
 	padding: 15px 24px;
 }
+.responsive .slick-next{
+	right: 16px;
+	}
+.responsive .slick-prev {
+    left: 16px;
+}
+
 }
 
 .tweet-rem h4::first-letter { 
@@ -336,4 +278,164 @@ h1{
 
 .responsive div{
 	text-align: center;
+}
+
+#page5{
+	background: url("../img/flower-corner.png");
+	background-size: cover;
+	/*background-repeat: no-repeat;*/
+	/*background-position: fixed;*/
+	/*bottom: 0;*/
+	
+}
+.responsive img{
+	border-radius: 100%;
+
+}
+/*.counter-div .span-text span{
+	font-size: 14px;
+}
+*/
+
+@media screen and (max-width: 1440px)
+{
+	.color-fill {
+		left: 28px;
+		width: 86.6%
+	}
+	.tree-wrapper
+	{
+		overflow-x: hidden;
+	}
+}
+
+@media screen and (max-width:1199px) {
+	.color-fill {
+		left: 0px;
+		width: 98.6%;
+	}
+}
+
+@media screen and (max-width:991px) {
+
+	.tree-col {
+		overflow-x: hidden;
+	}
+	.color-fill {
+		left: 0px;
+		width: 98.6%;	
+	}
+
+	img.tree-img {
+    width: 100%;
+}
+
+}
+
+
+@media screen and (max-width:767px) {
+		img.tree-img {
+    width: auto;
+}
+
+.color-fill {
+		left: 50%;
+		width: 395px;
+		transform: translateX(-51%);
+		-webkit-transform: translateX(-51%);
+		-moz-transform: translateX(-51%);	
+	}
+
+	#share-fb{
+		text-align: center;
+	}
+	#share-in{
+		text-align: center;
+	}
+	.responsive .slick-next{
+	right: 16px;
+	}
+.responsive .slick-prev {
+    left: 16px;
+}
+	}
+
+@media screen and (max-width:479px) {
+		img.tree-img {
+    width: auto;
+}
+.color-fill {
+		left: 50%;
+		width: 395px;
+		transform: translateX(-51%);
+		-webkit-transform: translateX(-51%);
+		-moz-transform: translateX(-51%);	
+	}
+	.counter-div{
+		padding: 10px;
+	}
+	#share-fb a, #share-in a{
+		font-size: 20px;
+	}
+	#page1 .row h1{
+		font-size: 28px;
+		margin-bottom: 10px;
+	}
+
+
+	#page1 .row h3{
+		font-size: 24px;
+		margin-bottom: 10px;
+	}
+}
+
+@media screen and (max-width:430px) {
+		img.tree-img {
+    width: auto;
+}
+.tree-wrapper{
+	overflow-x: hidden;
+}
+.color-fill {
+		left: 50%;
+		width: 395px;
+		transform: translateX(-51%);
+		-webkit-transform: translateX(-51%);
+		-moz-transform: translateX(-51%);	
+	}
+}
+
+.slick-next:before{
+
+	display:none;
+	}
+.slick-prev:before{
+
+	display:none;
+	}
+
+.responsive .slick-next{
+
+	background-image: url("../img/right-arrow.png");
+	width: 32px;
+	height: 32px;
+	background-size: cover;
+	/*right: 0px;*/
+	z-index: 1;
+}
+.responsive .slick-prev {
+    /*left: 0px;*/
+    background-image: url("../img/left-arrow.png");
+    width: 32px;
+	height: 32px;
+	background-size: cover;
+	z-index: 1;
+}
+
+#share-fb{
+	text-align: right;
+}
+
+a{
+	color: #063452;
 }

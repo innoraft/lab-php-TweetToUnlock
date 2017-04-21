@@ -142,7 +142,7 @@
                   <p class="lead">TWEET TO UNLOCK</p>
                   <p class="p-tags">We control the growth of every other species except our own</p>
                   <p class="p-tags">Cast your tweet and we will donate a tree on your behalf. Your each tweet is valuable for the environment.</p>
-                    <div id="tweet-button-div">
+                  <div id="tweet-button-div">
 						<a class="hvr-bounce-to-top twitter-btn" target="_blank" 
 			 			href="https://twitter.com/intent/tweet?text=spread%20the%20words%20%23eco_tweet%20@abc.com"
 			  			><i class="fa fa-twitter twitter-icon" aria-hidden="true"></i>Click To Tweet</a>
@@ -150,13 +150,14 @@
                 </div>
                 <div class="col-sm-5 col-md-5 col-md-offset-1 tree-col">
                   <div class="tree-wrapper">
-                  <div class="tweet-rem" style="text-align: center;"><h4><?php echo (5-$total_trees_to_donate_remainder);?> more tweets to unlock</h4></div>
-            </div>
                   <div class="color-fill tree-col" id="fill-color" style="height:<?php echo $total_trees_to_donate_remainder * 20;?>%;"></div>
-			             <img src="img/plant-a-tree.png" class="tree-img">
+			             <img src="img/plant-a-tree.png" class="tree-img img-responsive">
                    </div>
                 </div>
+                 </div>
+                 <div class="tweet-rem" style="text-align: center;"><h4><?php echo (5-$total_trees_to_donate_remainder);?> more tweets to unlock</h4></div>
               </div>
+
               
           </div>
         </section>
@@ -173,16 +174,16 @@
                             $donated_value_array=mysql_query("SELECT donated FROM trees");
                             $donated_array = array();
                                 while($donated_row = mysql_fetch_array($donated_value_array)){
-                                      $donated_array= $donated_row['donated'];
+                                      $donated_array[]= $donated_row['donated'];
                                   }
 
                         ?>
-                        <div><h4>text1</h4><img src="img/aloe.jpg"><h4><?php echo $donated_array[0];?></h4></div>
-                        <div><h4>text2</h4><img src="img/aloe.jpg"><h4><?php echo $donated_array[1];?></h4></div>
-                        <div><h4>text3</h4><img src="img/aloe.jpg"><h4><?php echo $donated_array[2];?></h4></div>
-                        <div><h4>text4</h4><img src="img/aloe.jpg"><h4><?php echo $donated_array[3];?></h4></div>
-                        <div><h4>text5</h4><img src="img/aloe.jpg"><h4><?php echo $donated_array[4];?></h4></div>
-                        <div><h4>text6</h4><img src="img/aloe.jpg"><h4><?php echo $donated_array[5];?></h4></div>
+                        <div><h5>snake plant</h5><img src="img/1.jpg" class="img-responsive"><h4>Donated: <?php echo $donated_array[0];?></h4></div>
+                        <div><h5>spider plant</h5><img src="img/2.jpg" class="img-responsive"><h4>Donated: <?php echo $donated_array[1];?></h4></div>
+                        <div><h5>calathea</h5><img src="img/4.jpg" class="img-responsive"><h4>Donated: <?php echo $donated_array[2];?></h4></div>
+                        <div><h5>Aloe vera</h5><img src="img/5.jpg" class="img-responsive"><h4>Donated: <?php echo $donated_array[3];?></h4></div>
+                        <div><h5>Dieffebanchia</h5><img src="img/6.jpg" class="img-responsive"><h4>Donated: <?php echo $donated_array[4];?></h4></div>
+                        <div><h5>ficus</h5><img src="img/3.jpg" class="img-responsive"><h4>Donated: <?php echo $donated_array[5];?></h4></div>
                     </div>
 
                       <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -194,8 +195,9 @@
                               dots: true,
                               infinite: false,
                               speed: 300,
-                              slidesToShow: 4,
-                              slidesToScroll: 4,
+                              slidesToShow: 3,
+                              slidesToScroll: 3,
+                              arrows: true,
                               responsive: [
                                 {
                                   breakpoint: 1024,
@@ -240,7 +242,7 @@
                  
                   <h2 class="heading">We have reached</h2>
                   
-                  <div class="col-md-3 col-sm-6 hvr-grow">
+                  <div class="col-md-3 col-sm-6 col-xs-6 hvr-grow" id="counter-div-right">
 			<div class="counter-div">
 				<div class="span-div">
 					<span class="fa fa-twitter"></span>
@@ -256,7 +258,7 @@
                   </script> -->
 				<span class="counter count-num"><?php echo $total_tweet_sum;?></span></div>
 				<div class="span-text">
-				<span>Total Tweets</span>
+				<span>Tweets</span>
        <!--  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
    <!--  <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
     <script src="js/jquery.counterup.min.js"></script> -->
@@ -264,7 +266,7 @@
 			</div>
 		</div>
 
-		<div class="col-md-3 col-sm-6 hvr-grow">
+		<div class="col-md-3 col-sm-6 col-xs-6 hvr-grow" id="counter-div-left">
 					<div class="counter-div">
 						<div class="span-div">
 							<span class="fa fa-user"></span>
@@ -272,12 +274,12 @@
 						<div class="span-number">
 						<span class="counter count-num3"><?php echo $total_users;?></span></div>
 						<div class="span-text">
-						<span>Total Users</span>
+						<span>Users</span>
 						</div>
 					</div>
 				</div>
 
-		<div class="col-md-3 col-sm-6 hvr-grow">
+		<div class="col-md-3 col-sm-6 col-xs-6 hvr-grow" id="counter-div-right">
 			<div class="counter-div">
 				<div class="span-div">
 					<span class="fa fa-envira"></span>
@@ -285,12 +287,12 @@
 				<div class="span-number">
 				<span class="counter count-num2"><?php echo floor($total_trees_to_donate_quotient);?></span></div>
 				<div class="span-text">
-				<span>Trees Donated</span>
+				<span>Donated</span>
 				</div>
 			</div>
 		</div>
 
-		<div class="col-md-3 col-sm-6 hvr-grow">
+		<div class="col-md-3 col-sm-6 col-xs-6 hvr-grow" id="counter-div-left">
 			<div class="counter-div">
 				<div class="span-div">
 					<span class="fa fa-recycle"></span>
@@ -298,7 +300,7 @@
 				<div class="span-number">
 				<span class="counter count-num4">6</span></div>
 				<div class="span-text">
-				<span>Days Of Help</span>
+				<span>Days</span>
 				</div>
 			</div>
 		</div>
@@ -315,7 +317,7 @@
                 <div class="col-md-12">
                   <h2 class="heading">share the words</h2>
                     <div class="row" style="padding-bottom: 30px;">
-                    <div class="col-sm-6" style="text-align: right" id="share-fb">
+                    <div class="col-sm-6" id="share-fb">
                       <a class="hvr-sweep-to-right facebook-btn" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"><i class="fa fa-facebook" aria-hidden="true"></i>Share On Facebook</a>
                     </div>
                     <div class="col-sm-6" id="share-in">
@@ -325,7 +327,7 @@
                   <div class="row">
                   <div class="col-md-12">
                    <h2 class="heading footer-head">follow us</h2>
-                   <div style="text-align: center;"><img src="img/320-132-B.png"></div>
+                   <div style="text-align: center;"><img src="img/320-132-B.png" class="img-responsive"></div>
                    <div class="social">
                     <p style="text-align: center;"><a href="http://www.innoraft.com/" target="_blank">www.innoraft.com</p>
                    <ul>
