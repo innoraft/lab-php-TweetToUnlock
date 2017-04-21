@@ -1,0 +1,339 @@
+/* your styles go here */
+.twitter-btn {
+    box-sizing: border-box;
+    padding:15px 40px;
+    font-size: 26px;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #1b95e0;
+    box-shadow: 0px 9px 8px -6px rgba(0,0,0,0.5);
+}
+#tweet-button-div{
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 20px;
+}
+.twitter-btn i{
+    font-size: 26px;
+    padding-right: 10px;
+    color: white;
+}
+.linkedin-btn{
+    /*position: absolute;*/
+   background-color:  #0b529e;
+    box-sizing: border-box;
+    padding:15px 40px;
+    font-size: 26px;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 10px;
+   /* bottom: 15%;
+    right: 40%;*/
+}
+.linkedin-btn i{
+    font-size: 26px;
+    padding-right: 10px;
+    }
+.facebook-btn{
+    /*position: absolute;*/
+   background-color:  #8b9dc3;
+    box-sizing: border-box;
+    padding:15px 40px;
+    font-size: 26px;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 10px;
+    /*bottom: 15%;
+    right: 12%;*/
+}
+.facebook-btn i{
+    font-size: 26px;
+    padding-right: 10px;
+    }
+
+a:hover{
+  text-decoration: none;
+}
+.hvr-sweep-to-left:before {
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  border-style: none;
+   background-color:  #1b95e0;
+    color: white;
+}
+.hvr-sweep-to-right:before {
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  border-style: none;
+   background-color:  #3b5998;
+    color: white;
+}
+.hvr-bounce-to-top:before {
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  border-style: none;
+   background-color:  #0b529e;
+    color: white;
+}
+
+.color-fill{
+	position: absolute;
+	width: 398px;
+	/*height: 100%;*/
+	/*margin: 2px;*/
+	margin-left: 2px;
+	background-color: #a2c544;
+	background-image: -webkit-linear-gradient(bottom, rgba(69,146,183,.54) 0%, rgba(69,146,183,0) 100%);
+	z-index: -1;
+	bottom: 2px;
+	left: 43px;
+}
+
+@media screen and (max-width:1200px) {
+	.color-fill {
+		left: 14px;
+	}
+}
+
+@media screen and (max-width:992px) {
+
+	.tree-col {
+		overflow-x: hidden;
+	}
+	.color-fill {
+		left: 14px;
+		width: 89%;	
+	}
+
+	img.tree-img {
+    width: 100%;
+}
+
+}
+
+@media screen and (max-width:767px) {
+		img.tree-img {
+    width: auto;
+}
+
+.color-fill {
+		left: 50%;
+		width: 395px;
+		transform: translateX(-51%);
+		-webkit-transform: translateX(-51%);
+		-moz-transform: translateX(-51%);	
+	}
+
+	}
+
+@media screen and (max-width:480px) {
+		img.tree-img {
+    width: 100%;
+}
+
+.color-fill {
+		
+		width: 89.6%;	
+	}
+
+}	
+
+
+.counter-div{
+	padding: 30px;
+	margin: 5px;
+	font-size: 40px;
+	background-color: rgb(240, 240, 240);
+	box-shadow: 0 8px 8px -8px;
+
+}
+#donated{
+	padding-bottom: 10px;
+	border-bottom: 4px solid #57b398;
+}
+.counter-row{
+	padding: 20px 0;
+}
+#counter-text{
+	font-size: 40px;
+	text-align: center;
+	padding: 20px;
+	margin-top: 30px;
+}
+.fa-twitter{
+	color: #0084b4;
+	font-size: 60px;
+}
+.fa-envira{
+	color: #82b463;
+	transform: scaleX(-1);
+	font-size: 50px;
+}
+.fa-user{
+	color: #57b398;
+	font-size: 60px;
+}
+.fa-recycle{
+	color: #adc244;
+	font-size: 60px;
+}
+
+.span-div{
+	text-align: center;
+	margin: 0 auto;
+	font-size: 60px;
+}
+.span-number{
+	text-align: center;
+	margin: 0 auto;
+	font-size: 60px;
+	}
+.count-num{
+	padding-bottom: 10px;
+	border-bottom: 4px solid #0084b4;
+}
+.count-num2{
+	padding-bottom: 10px;
+	border-bottom: 4px solid #82b463;
+}
+.count-num3{
+	padding-bottom: 10px;
+	border-bottom: 4px solid #57b398;
+}
+.count-num4{
+	padding-bottom: 10px;
+	border-bottom: 4px solid #adc244;
+}
+
+.span-text{
+	font-size: 20px;
+	font-family: "Open-sans",sans-serif;
+	color: rgb(130,130,130);
+	text-align: center;
+	margin-top: 30px;
+}
+.counter-overlay{
+	background-image: url("images/image.jpg");
+	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
+	width: 100%;
+	height: 500px;
+}
+
+/*.p-tag{
+	font-size: 20px;
+	}*/
+p{
+	font-family: "Oswald";
+	font-size: 22px;
+}
+.typewriter h1 {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid #adc244; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  /*letter-spacing: .15em;*/ /* Adjust as needed */
+  animation: 
+    typing 3.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #adc244; }
+}
+
+h1{
+	font-size: 36px;
+}
+
+.social ul{
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+.social ul li{
+	list-style-type: none;
+	display: inline-block;
+	padding: 5px 10px;
+}
+
+.social ul li:nth-child(2) a {
+    color: #4fbfa8;
+    cursor: pointer;
+}
+
+.social ul li:nth-child(2) i {
+    font-size: 2em;
+    color: #4fbfa8;
+    cursor: pointer;
+}
+
+.social ul li:hover i {
+    color: #348e7b;
+}
+
+.cr{
+	margin-top: 30px;
+}
+
+.footer-head{
+	margin-bottom: 0;
+}
+
+.tree-col{
+	text-align: center;
+}
+.responsive h1{
+	text-align: center;
+
+}
+
+.hvr-grow {
+	display: inherit;
+	margin-bottom: 20px;
+}
+
+@media only screen (min-width: 320px;) and (max-width: 479px;) {
+
+	.twitter-btn{
+		padding: 15px 30px;
+	}
+.facebook-btn{
+	padding: 15px 24px;
+}
+.linkedin-btn{
+	padding: 15px 24px;
+}
+}
+
+.tweet-rem h4::first-letter { 
+    font-size: 38px;
+    color: #1b95e0;
+}
+
+.tree-wrapper{
+	position: relative;
+}
+
+.responsive div{
+	text-align: center;
+}
