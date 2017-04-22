@@ -296,7 +296,6 @@ h1{
 	border-radius: 100%;
 
 }
-
 /*.counter-div .span-text span{
 	font-size: 14px;
 }
@@ -319,6 +318,14 @@ h1{
 		left: 0px;
 		width: 98.6%;
 	}
+	.responsive .slick-next{
+
+	right: 16px;
+}
+	.responsive .slick-prev {
+    left:16px;
+}
+
 }
 
 @media screen and (max-width:991px) {

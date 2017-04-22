@@ -53,13 +53,15 @@
         css.type = "text/css";
         css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
         document.body.appendChild(css);
-    };
+//     };
 
 
-window.onload=function() {
+// window.onload=function() {
   // Month,Day,Year,Hour,Minute,Second
   upTime('april,01,2017,00:00:00'); // ****** Change this line!
-}
+};
+
+
 function upTime(countTo) {
   now = new Date();
   countTo = new Date(countTo);
