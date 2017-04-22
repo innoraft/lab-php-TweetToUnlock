@@ -55,73 +55,14 @@
             <div class="row"><img src="img/eco_logo_1.png" style="width: 260px; height: 260px;"></div>
               <div class="row">
                 <div class="col-md-8 col-md-offset-2 col-sm-12">
-                  <!-- <div class="typewriter"><h1>Welcome To Eco Tweet.</h1></div> -->
+                  
 
-                  <script type="text/javascript">
-                    var TxtType = function(el, toRotate, period) {
-        this.toRotate = toRotate;
-        this.el = el;
-        this.loopNum = 0;
-        this.period = parseInt(period, 10) || 2000;
-        this.txt = '';
-        this.tick();
-        this.isDeleting = false;
-    };
-
-    TxtType.prototype.tick = function() {
-        var i = this.loopNum % this.toRotate.length;
-        var fullTxt = this.toRotate[i];
-
-        if (this.isDeleting) {
-        this.txt = fullTxt.substring(0, this.txt.length - 1);
-        } else {
-        this.txt = fullTxt.substring(0, this.txt.length + 1);
-        }
-
-        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
-
-        var that = this;
-        var delta = 200 - Math.random() * 100;
-
-        if (this.isDeleting) { delta /= 2; }
-
-        if (!this.isDeleting && this.txt === fullTxt) {
-        delta = this.period;
-        this.isDeleting = true;
-        } else if (this.isDeleting && this.txt === '') {
-        this.isDeleting = false;
-        this.loopNum++;
-        delta = 500;
-        }
-
-        setTimeout(function() {
-        that.tick();
-        }, delta);
-    };
-
-    window.onload = function() {
-        var elements = document.getElementsByClassName('typewrite');
-        for (var i=0; i<elements.length; i++) {
-            var toRotate = elements[i].getAttribute('data-type');
-            var period = elements[i].getAttribute('data-period');
-            if (toRotate) {
-              new TxtType(elements[i], JSON.parse(toRotate), period);
-            }
-        }
-        // INJECT CSS
-        var css = document.createElement("style");
-        css.type = "text/css";
-        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
-        document.body.appendChild(css);
-    };
-
-                  </script>
-
+                  <script type="text/javascript" src="js/custom.js"></script>
                   <h1>
-  <a href="" class="typewrite" style="color:#fff; text-decoration: none; " data-period="2000" data-type='[ "welcome to eco tweet","tweet to donate", "save the environment." ]'>
-    <span class="wrap"></span>
-  </a>
-</h1>
+                    <a href="" class="typewrite" style="color:#fff; text-decoration: none; " data-period="2000" data-type='[ "welcome to eco tweet","tweet to donate", "save the environment." ]'>
+                      <span class="wrap"></span>
+                    </a>
+                  </h1>
                   <h3>#eco_tweet</h3>
                   <p>“ Look deep into nature from the earth book and  plant more tree as it never charge a fee. ”</p>
                   <p>Your contribution: An immediate difference.</p>
@@ -297,8 +238,9 @@
 				<div class="span-div">
 					<span class="fa fa-recycle"></span>
 				</div>
-				<div class="span-number">
-				<span class="counter count-num4">6</span></div>
+				<div class="span-number countup">
+				<span class="counter count-num4" id="days">6</span>
+        </div>
 				<div class="span-text">
 				<span>Days</span>
 				</div>
