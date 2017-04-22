@@ -6,7 +6,7 @@
     color: #fff;
     text-decoration: none;
     cursor: pointer;
-    background-color: #1b95e0;
+    background-color: #00aced;
     box-shadow: 0px 9px 8px -6px rgba(0,0,0,0.5);
 }
 #tweet-button-div{
@@ -18,6 +18,23 @@
     font-size: 26px;
     padding-right: 10px;
     color: white;
+}
+.twitter-btn:focus{
+	color: white;
+	text-decoration: none;
+	/*outline: inherit;*/
+}
+
+.facebook-btn:focus{
+	color: white;
+	text-decoration: none;
+	outline: inherit;
+}
+
+.linkedin-btn:focus{
+	color: white;
+	text-decoration: none;
+	outline: inherit;
 }
 .linkedin-btn{
     /*position: absolute;*/
@@ -81,7 +98,7 @@ a:hover{
   -webkit-transition-duration: 0.5s;
   transition-duration: 0.5s;
   border-style: none;
-   background-color:  #0b529e;
+   background-color:  #1dcaff;
     color: white;
 }
 
