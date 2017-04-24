@@ -58,7 +58,7 @@
 
 // window.onload=function() {
   // Month,Day,Year,Hour,Minute,Second
-  upTime('april,01,2017,00:00:00'); // ****** Change this line!
+  upTime('april,22,2017,00:00:00'); // ****** Change this line!
 };
 
 

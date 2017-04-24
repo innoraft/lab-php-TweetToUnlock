@@ -304,6 +304,7 @@ h1{
 #page5{
 	background: url("../img/flower-corner.png");
 	background-size: cover;
+	background-color: #eeeeee;
 	/*background-repeat: no-repeat;*/
 	/*background-position: fixed;*/
 	/*bottom: 0;*/
@@ -465,3 +466,7 @@ h1{
 a{
 	color: #063452;
 }
+
+#page1 .icon {
+	bottom:10px;
+	}

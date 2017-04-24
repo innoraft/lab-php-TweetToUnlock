@@ -85,7 +85,7 @@
                   <p class="p-tags">Cast your tweet and we will donate a tree on your behalf. Your each tweet is valuable for the environment.</p>
                   <div id="tweet-button-div">
 						<a class="hvr-bounce-to-top twitter-btn" target="_blank" 
-			 			href="https://twitter.com/intent/tweet?text=spread%20the%20words%20%23eco_tweet%20@abc.com"
+			 			href="https://twitter.com/intent/tweet?text=spread%20the%20words%20%23eco_tweet%20@ecotweet.sites.innoraft.com"
 			  			><i class="fa fa-twitter twitter-icon" aria-hidden="true"></i>Click To Tweet</a>
   					</div>
                 </div>
@@ -260,10 +260,10 @@
                   <h2 class="heading">share the words</h2>
                     <div class="row" style="padding-bottom: 30px;">
                     <div class="col-sm-6" id="share-fb">
-                      <a class="hvr-sweep-to-right facebook-btn" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"><i class="fa fa-facebook" aria-hidden="true"></i>Share On Facebook</a>
+                      <a class="hvr-sweep-to-right facebook-btn" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fecotweet.sites.innoraft.com%2F&amp;src=sdkpreparse"><i class="fa fa-facebook" aria-hidden="true"></i>Share On Facebook</a>
                     </div>
                     <div class="col-sm-6" id="share-in">
-                      <a class="hvr-sweep-to-left linkedin-btn" target="_blank" href="https://www.linkedin.com/cws/share?url=abc.com&original_referer=http%3A%2F%2Fakash.com%2Ftesttwitter%2Findex.html&token=&isFramed=false&lang=en_US&_ts=1492492610480.896&xd_origin_host=http%3A%2F%2Fakash.com"><i class="fa fa-linkedin" aria-hidden="true"></i>Share On LinkedIn</a>
+                      <a class="hvr-sweep-to-left linkedin-btn" target="_blank" href="https://www.linkedin.com/cws/share?url=http%3A%2F%2Fecotweet.sites.innoraft.com"><i class="fa fa-linkedin" aria-hidden="true"></i>Share On LinkedIn</a>
                     </div>
                   </div>
                   <div class="row">
@@ -309,3 +309,5 @@
     </script>
   </body>
 </html>
+
+
