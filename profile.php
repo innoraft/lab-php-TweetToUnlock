@@ -113,25 +113,25 @@ if(isset($_SESSION['username'])){
             <!-- Modal Body -->
             <div class="modal-body">
                 
-                <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+                <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data" action="addtree.php">
                   <div class="form-group">
                     <label  class="col-sm-2 control-label">NAME</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" placeholder="NAME OF THE TREE"/>
+                        <input type="text" name="name" class="form-control" placeholder="NAME OF THE TREE"/>
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-sm-2 control-label"
                           >DESCRIPTION</label>
                     <div class="col-sm-10">
-                        <textarea class="form-control" placeholder="DESCRIPTION OF THE TREE"></textarea>
+                        <textarea class="form-control" name="description" placeholder="DESCRIPTION OF THE TREE"></textarea>
                     </div>
                   </div>
                    <div class="form-group">
                     <label class="col-sm-2 control-label"
                           >OPLOAD AN IMAGE</label>
                     <div class="col-sm-10">
-                        <input type="file" name="fileToUpload" id="fileToUpload">
+                        <input type="file" name="image" id="image" accept="image/*">
                     </div>
                   </div>
                    <div class="modal-footer">
@@ -139,7 +139,7 @@ if(isset($_SESSION['username'])){
                         data-dismiss="modal">
                             CLOSE
                 </button>
-                <button type="button" class="btn btn-primary" name="submit">
+                <button type="submit" class="btn btn-primary" name="submit">
                     SUBMIT
                 </button>
             </div>
