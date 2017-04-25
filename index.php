@@ -112,19 +112,13 @@
                   <h2 class="heading">A bundle of Green</h2>
                     <div class="responsive">
                         <?php 
-                            $donated_value_array=mysql_query("SELECT donated FROM trees");
-                            $donated_array = array();
-                                while($donated_row = mysql_fetch_array($donated_value_array)){
-                                      $donated_array[]= $donated_row['donated'];
+                            $donated_value_array=mysql_query("SELECT * FROM trees");
+                              while($donated_row = mysql_fetch_array($donated_value_array)){
+                                    ?>
+                                    <div><h5><?php echo $donated_row['name'];?></h5><img src="<?php echo $donated_row['image'];?>" class="img-responsive"><h4>Donated: <?php echo $donated_row['donated'];?></h4></div>
+                                   <?php  
                                   }
-
-                        ?>
-                        <div><h5>snake plant</h5><img src="img/1.jpg" class="img-responsive"><h4>Donated: <?php echo $donated_array[0];?></h4></div>
-                        <div><h5>spider plant</h5><img src="img/2.jpg" class="img-responsive"><h4>Donated: <?php echo $donated_array[1];?></h4></div>
-                        <div><h5>calathea</h5><img src="img/4.jpg" class="img-responsive"><h4>Donated: <?php echo $donated_array[2];?></h4></div>
-                        <div><h5>Aloe vera</h5><img src="img/5.jpg" class="img-responsive"><h4>Donated: <?php echo $donated_array[3];?></h4></div>
-                        <div><h5>Dieffebanchia</h5><img src="img/6.jpg" class="img-responsive"><h4>Donated: <?php echo $donated_array[4];?></h4></div>
-                        <div><h5>ficus</h5><img src="img/3.jpg" class="img-responsive"><h4>Donated: <?php echo $donated_array[5];?></h4></div>
+                              ?>
                     </div>
 
                       <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>

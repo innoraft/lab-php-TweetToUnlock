@@ -51,6 +51,7 @@ if(isset($_SESSION['username'])){
 	border-radius: 5px;
 	box-shadow: 0 6px 12px -6px black;
 }
+
   </style>
 </head>
 <body>
@@ -61,7 +62,9 @@ if(isset($_SESSION['username'])){
       <a class="navbar-brand" href="#">WELCOME ADMIN</a>
     </div>
     <ul class="nav navbar-nav navbar-right">
+    <li class="active"><a href="profile.php"><i class="fa fa-home" aria-hidden="true"></i> HOME</a></li>
       <li class="active"><a href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> LOGOUT</a></li>
+
       </ul>
   </div>
 </nav>
