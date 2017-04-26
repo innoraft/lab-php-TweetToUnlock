@@ -114,6 +114,7 @@ if(isset($_GET['tree_id']))
 <?php 
 $query= mysql_query("SELECT * FROM trees");
 if(mysql_num_rows($query)> 0){
+	$i=1;
 while($row= mysql_fetch_array($query)){
 ?>
 
@@ -126,86 +127,20 @@ while($row= mysql_fetch_array($query)){
 		<h4><?php echo $row['description'];?></h4>
 		<h3 id="donated">Donated: <?php echo $row['donated'];?></h3>
 		<div id="buttons">
-				<button id="update" data-toggle="modal" data-target="#myModalHorizontal">
-				<i class="fa fa-wrench aria-hidden="true"></i> UPDATE</a>
-				</button>
-				<button id="delete" name="delete"><a href="showtree.php?tree_id=<?php echo $row['tree_id'];?>"><i class="fa fa-trash" aria-hidden="true"></i> DELETE</a>
-				</button>
+				<a href="updateform.php?tree_id=<?php echo $row['tree_id'];?>"><button id="update">
+				<i class="fa fa-wrench aria-hidden="true"></i> UPDATE</button></a>
+				<a href="showtree.php?tree_id=<?php echo $row['tree_id'];?>"><button id="delete" name="delete" onclick="return confirm('are you sure you want to delete?')"><i class="fa fa-trash" aria-hidden="true"></i> DELETE
+				</button></a>
 		</div>
 	</div>
 </div>
 
-<?php }
+<?php $i++;}
 } 
 else{
 	?><h3>NO TREES TO SHOW</h3><?php
 }
 ?>
-
-
-
-
-<!-- Modal -->
-<div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog" 
-     aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <button type="button" class="close" 
-                   data-dismiss="modal">
-                       <span aria-hidden="true">&times;</span>
-                       <span class="sr-only">Close</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">
-                    UPDATE TREE
-                </h4>
-            </div>
-            
-            <!-- Modal Body -->
-            <div class="modal-body">
-                
-                <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data" action="update.php">
-                <div class="form-group">
-                    <label  class="col-sm-2 control-label">TREE ID</label>
-                    <div class="col-sm-10">
-                        <input type="text" name="name" class="form-control" readonly />
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label  class="col-sm-2 control-label">NAME</label>
-                    <div class="col-sm-10">
-                        <input type="text" name="name" class="form-control" placeholder="NAME OF THE TREE"/>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label"
-                          >DESCRIPTION</label>
-                    <div class="col-sm-10">
-                        <textarea class="form-control" name="description" placeholder="DESCRIPTION OF THE TREE"></textarea>
-                    </div>
-                  </div>
-                   <div class="form-group">
-                    <label class="col-sm-2 control-label"
-                          >OPLOAD AN IMAGE</label>
-                    <div class="col-sm-10">
-                        <input type="file" name="image" id="image" accept="image/*">
-                    </div>
-                  </div>
-                   <div class="modal-footer">
-                <button type="button" class="btn btn-default"
-                        data-dismiss="modal">
-                            CLOSE
-                </button>
-                <button type="submit" class="btn btn-primary" name="submit">
-                    SAVE CHANGES
-                </button>
-            </div>
-                    </form>
-                  </div>          
-        </div>
-    </div>
-</div>
 
 
 </body>
