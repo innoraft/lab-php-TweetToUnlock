@@ -4,8 +4,8 @@ include "oauthconnect.php";
 ?>
 
 <?php
-//--------------fetching the test table from db and storing in array-----------
-$fetch_users= mysql_query("SELECT * FROM test");
+//--------------fetching the users table from db and storing in array-----------
+$fetch_users= mysql_query("SELECT * FROM users");
 $user_array = array();
 	while($user_row = mysql_fetch_array($fetch_users)){
 	   		$user_array[$user_row['user_id']] = $user_row['t_count'];
@@ -40,9 +40,9 @@ foreach($tweets->statuses as $key=>$tweet)
 
 <?php
 //---------------inserting the array values in database---------------
-		$truncate_sql= mysql_query("TRUNCATE test");
+		$truncate_sql= mysql_query("TRUNCATE users");
 
-		$insert_sql= "INSERT INTO test (user_id,t_count) VALUES"; 
+		$insert_sql= "INSERT INTO users (user_id,t_count) VALUES"; 
 		foreach ($user_array as $u_id=>$t_c) {
 		    $insert_sql .= "('".$u_id."', ".$t_c."),";    
 		}
@@ -53,7 +53,7 @@ foreach($tweets->statuses as $key=>$tweet)
 
 //------------------updating the trees--------------------
 $total_tweet_sum= array_sum($user_array);
-$total_users= mysql_num_rows(mysql_query("SELECT * FROM test"));
+$total_users= mysql_num_rows(mysql_query("SELECT * FROM users"));
 // echo $total_tweet_sum;
 $total_tree_sql= mysql_query("SELECT * FROM trees");
 $total_trees_rows= mysql_num_rows($total_tree_sql);		//total trees

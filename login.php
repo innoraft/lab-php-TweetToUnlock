@@ -7,6 +7,7 @@ session_start();
 <head>
 	<title></title>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
 <style>
 body{
 	background-color: #eeeeee;

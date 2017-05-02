@@ -13,6 +13,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
     <!-- Bootstrap and Font Awesome css-->
     <!-- we use cdn but you can also include local files located in css directory-->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -74,8 +75,19 @@
           <div class="icon faa-float animated"><i class="fa fa-angle-double-down"></i></div>
         </section>
         <!-- page 2-->
+<!-- <script type="text/javascript">
+  $(document).ready(
+function update() 
+{
+    $.get("index.php", function(data){
+            $("#fill-color").html(data);
+            window.setTimeout(update, 10000);
+        });
+});
+</script> -->
+
         <section id="page2">
-          <div class="content">
+          <div class="content" id="page2-cont">
             <div class="container clearfix">
               <div class="row">
                 <div class="col-sm-7 col-md-6"> 

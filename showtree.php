@@ -15,6 +15,7 @@ if(isset($_GET['tree_id']))
 	<title></title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -91,7 +92,8 @@ if(isset($_GET['tree_id']))
   #delete a:hover{
   	text-decoration: none;
   }
-	</style>
+
+  	</style>
 </head>
 
 <body>
@@ -119,10 +121,10 @@ while($row= mysql_fetch_array($query)){
 ?>
 
 <div class="row row-tree">
-	<div class="col-md-3">
+	<div class="col-md-3 col-sm-4">
 	<img src="<?php echo $row['image'];?>" class="tree-img">
 	</div>
-	<div class="col-md-9">
+	<div class="col-md-9 col-sm-8">
 		<h2><?php echo $row['name'];?></h2>
 		<h4><?php echo $row['description'];?></h4>
 		<h3 id="donated">Donated: <?php echo $row['donated'];?></h3>

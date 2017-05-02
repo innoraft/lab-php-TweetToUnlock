@@ -17,8 +17,11 @@ if(isset($_GET['tree_id']))
 <head>
 	<title>eco tweet management</title>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 	<style>
-	@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
 * {
   margin: 0;
   padding: 0;
@@ -33,10 +36,10 @@ if(isset($_GET['tree_id']))
 }
 
 body {
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
-  font-weight: 100;
-  font-size: 12px;
-  line-height: 30px;
+  font-family: "Oswald";
+  /*font-weight: 100;*/
+  /*font-size: 12px;*/
+  /*line-height: 30px;*/
   color: #777;
   background: #4CAF50;
 }
@@ -57,6 +60,7 @@ body {
 #contact {
   background: #F9F9F9;
   padding: 25px;
+  margin-bottom: 30px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
@@ -96,6 +100,7 @@ fieldset {
   height: 100px;
   max-width: 100%;
   resize: none;
+  margin: 0px;
 }
 
 #contact button[type="submit"] {
@@ -141,6 +146,10 @@ fieldset {
 	margin: 0 auto;
 }
 
+.nav li:hover{
+	cursor: pointer;
+}
+
 /*::-webkit-input-placeholder {
   color: #888;
 }
@@ -159,6 +168,19 @@ fieldset {
 	</style>
 </head>
 <body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WELCOME ADMIN</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+    <li class="active"><a href="profile.php"><i class="fa fa-home" aria-hidden="true"></i> HOME</a></li>
+    <li class="active"><a href="showtree.php"><i class="fa fa-home" aria-hidden="true"></i> SHOW ITEMS</a></li>
+      <li class="active"><a href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> LOGOUT</a></li>
+      </ul>
+  </div>
+</nav>
+
 <div class="container"> 
 <div class="align-center">
 <img src="img/eco_logo_1.png"></div>

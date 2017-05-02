@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 ?>
@@ -11,6 +12,7 @@ if(isset($_SESSION['username'])){
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -51,6 +53,12 @@ if(isset($_SESSION['username'])){
 	border-radius: 5px;
 	box-shadow: 0 6px 12px -6px black;
 }
+@media only screen (min-width: 768px)
+  {
+  	.navbar-right li{
+  		display: none;
+  	}
+  } 
 
   </style>
 </head>
@@ -81,14 +89,14 @@ if(isset($_SESSION['username'])){
 <!-- Button trigger modal -->
 <div class="container">
 <div class="row align-center">
-<button class="tree-btn" data-toggle="modal" data-target="#myModalHorizontal">
-    ADD TREES
+<button class="tree-btn" data-toggle="modal" data-target="#myModalHorizontal"><i class="fa fa-plus fa-lg" aria-hidden="true" style=""></i> 
+     ADD TREES
 </button>
 </div>
 <div class="row align-center">
 <form action="showtree.php" method="post">
-<button class="tree-btn">
-    SHOW TREES
+<button class="tree-btn"><i class="fa fa-list" aria-hidden="true"></i>
+     SHOW TREES
 </button>
 </form>
 </div>
