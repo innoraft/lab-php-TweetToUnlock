@@ -1,4 +1,4 @@
-<?php 
+<?php
 //include "dbconnect.php";
 // include "oauthconnect.php";
  include "index2.php";
@@ -25,9 +25,9 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 	  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-	  
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
- 
+
      <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
      <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
 
@@ -41,13 +41,11 @@
     <link rel="stylesheet" href="css/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="favicon.png">
-    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+
   </head>
   <body>
     <div class="wrapper">
-      <div class="main"> 
+      <div class="main">
         <!-- page 1-->
         <section id="page1">
           <div class="overlay"></div>
@@ -56,7 +54,7 @@
             <div class="row"><img src="img/eco_logo_1.png" style="width: 260px; height: 260px;"></div>
               <div class="row">
                 <div class="col-md-8 col-md-offset-2 col-sm-12">
-                  
+
 
                   <script type="text/javascript" src="js/custom.js"></script>
                   <h1>
@@ -75,43 +73,91 @@
           <div class="icon faa-float animated"><i class="fa fa-angle-double-down"></i></div>
         </section>
         <!-- page 2-->
+
 <!-- <script type="text/javascript">
-  $(document).ready(
-function update() 
-{
-    $.get("index.php", function(data){
-            $("#fill-color").html(data);
-            window.setTimeout(update, 10000);
-        });
+$(document).ready(function(){
+
+    var auto= $('#fill-color'), refreshed_content;
+		refreshed_content = setInterval(function(){
+		auto.load("index2.php");
+		auto.fadeOut('slow').load("index.php").fadeIn("slow");},
+		3000);
+		console.log(refreshed_content);
+		return false;
 });
 </script> -->
 
+<!-- <script type="text/javascript">
+  $(document).ready(function(){
+ //$('#fill-color').load(document.URL +  ' #fill-color');
+ //var call = array('call' => 'update');
+
+  $(window).on( "load", function() {
+  	console.log("load func");
+ $.ajax({
+    type: 'GET',
+    url: 'index2.php?call=update',
+    //data: call,
+    success: function(result){
+    	$("#fill-color").html(result);
+    }})
+  console.log('working');});
+});
+</script> -->
+
+<!-- <script type="text/javascript">
+  setInterval(
+    function(){
+  $.ajax{
+    method: 'get',
+    url: 'index2.php',
+    data: {
+      'ajax': true
+    }
+  }
+},5000);
+</script> -->
+
+<!-- <script type="text/javascript">
+  $(document).ready(function() {
+    window.setInterval(function() { loadData('index2.php'); }, 5000);
+    window.setInterval(function() { loadData('index.php', $(" #fill-color")); }, 5000);
+});
+
+var loadData = function(page, ele) {
+    $.ajax({
+        type: "GET",
+        url: page
+      });
+};
+</script>
+ -->
         <section id="page2">
           <div class="content" id="page2-cont">
             <div class="container clearfix">
               <div class="row">
-                <div class="col-sm-7 col-md-6"> 
+                <div class="col-sm-7 col-md-6">
                   <h2 class="heading">Trees For The Future.</h2>
                   <p class="lead">TWEET TO UNLOCK</p>
                   <p class="p-tags">We control the growth of every other species except our own</p>
                   <p class="p-tags">Cast your tweet and we will donate a tree on your behalf. Your each tweet is valuable for the environment.</p>
                   <div id="tweet-button-div">
-						<a class="hvr-bounce-to-top twitter-btn" target="_blank" 
+						<a class="hvr-bounce-to-top twitter-btn" target="_blank"
 			 			href="https://twitter.com/intent/tweet?text=spread%20the%20words%20%23eco_tweet%20@ecotweet.sites.innoraft.com"
 			  			><i class="fa fa-twitter twitter-icon" aria-hidden="true"></i>Click To Tweet</a>
   					</div>
                 </div>
                 <div class="col-sm-5 col-md-5 col-md-offset-1 tree-col">
                   <div class="tree-wrapper">
-                  <div class="color-fill tree-col" id="fill-color" style="height:<?php echo $total_trees_to_donate_remainder * 20;?>%;"></div>
+                  <div class="color-fill tree-col" id="fill-color"></div>
 			             <img src="img/plant-a-tree.png" class="tree-img img-responsive">
                    </div>
                 </div>
                  </div>
-                 <div class="tweet-rem" style="text-align: center;"><h4><?php echo (5-$total_trees_to_donate_remainder);?> more tweets to unlock</h4></div>
+                 <div class="tweet-rem" style="text-align: center;"><h4><?php echo (5-$total_trees_to_donate_remainder);?> more tweet to unlock</h4></div>
               </div>
 
-              
+
           </div>
         </section>
         <!-- page 3 - class section-gray adds gray background-->
@@ -122,18 +168,18 @@ function update()
               <div class="row services">
                 <div class="col-md-12">
                   <h2 class="heading">A bundle of Green</h2>
-                    <div class="responsive">
-                        <?php 
-                            $donated_value_array=mysql_query("SELECT * FROM trees");
+                    <div class="responsive" id="tree-stack">
+                        <?php
+                            $donated_value_array=mysql_query("SELECT * FROM donated_items");
                               while($donated_row = mysql_fetch_array($donated_value_array)){
                                     ?>
-                                    <div><h5><?php echo $donated_row['name'];?></h5><img src="<?php echo $donated_row['image'];?>" class="img-responsive"><h4>Donated: <?php echo $donated_row['donated'];?></h4></div>
-                                   <?php  
+                                    <div><h5><?php echo $donated_row['name'];?></h5><img src="<?php echo $donated_row['image'];?>" class="img-responsive"><h4 class="donated_count">Donated: <?php echo $donated_row['donated'];?></h4></div>
+                                   <?php
                                   }
                               ?>
                     </div>
 
-                      <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+                     <!--  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script> -->
                       <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
                       <script type="text/javascript" src="slick/slick.min.js"></script>
 
@@ -169,12 +215,9 @@ function update()
                                     slidesToScroll: 1
                                   }
                                 }
-                                // You can unslick at a given breakpoint now by adding:
-                                // settings: "unslick"
-                                // instead of a settings object
                               ]
                             });
-                                                                          
+
                       </script>
                 </div>
               </div>
@@ -184,31 +227,22 @@ function update()
         <section id="page4">
           <div class="content">
             <div class="container clearfix">
-              <div class="row">
-                <div>
-                 
+              <div class="row" id="count">
+                <div class="reached_out">
+
                   <h2 class="heading">We have reached</h2>
-                  
+
                   <div class="col-md-3 col-sm-6 col-xs-6 hvr-grow" id="counter-div-right">
 			<div class="counter-div">
 				<div class="span-div">
 					<span class="fa fa-twitter"></span>
 				</div>
 				<div class="span-number">
-        <!--  <script>
-                       jQuery(document).ready(function( $ ) {
-                        $('.counter').counterUp({
-                            delay: 10,
-                            time: 1000
-                        });
-                    });
-                  </script> -->
+
 				<span class="counter count-num"><?php echo $total_tweet_sum;?></span></div>
 				<div class="span-text">
 				<span>Tweets</span>
-       <!--  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
-   <!--  <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
-    <script src="js/jquery.counterup.min.js"></script> -->
+
 				</div>
 			</div>
 		</div>
@@ -282,7 +316,7 @@ function update()
                       <li><a href="https://twitter.com/innoraft" target="_blank"><i class="fa fa-twitter fa-2x"></i></a></li>
                       <li><a href="https://www.linkedin.com/company/innoraft" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a></li>
                       <li><a href="https://www.facebook.com/Innoraft/" target="_blank"><i class="fa fa-facebook fa-2x"></i></a></li>
-                      <li><a href="https://www.drupal.org/innoraft" target="_blank"><i class="fa fa-dribbble fa-2x"></i></a></li>
+                      <li><a href="https://www.drupal.org/innoraft" target="_blank"><i class="fa fa-drupal fa-2x"></i></a></li>
                       <li><a href="https://github.com/innoraft" target="_blank"><i class="fa fa-github-square fa-2x"></i></a></li>
                       </ul>
                     </div>
@@ -294,16 +328,28 @@ function update()
             </div>
           </div>
         </section>
-        
+
         </div>
     </div>
     <!-- Javascript files-->
-    
+
     <script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="js/jquery.cookie.js"></script>
     <script src="js/jquery.onepage-scroll.js"></script>
     <script src="js/front.js"></script>
+	<script>
+  setInterval(function(){
+	$.post("index2.php?moreTweetLeft=yes",function(callback){
+		$('.tweet-rem').html('<h4>'+(5-callback[0])+' more tweet to unlock</h4>');
+		var hper = callback[0] * 20;
+		$('#fill-color').css('height',hper+'%');
+    $('.count-num').html(callback[3]);
+    $('.count-num3').html(callback[1]);
+    $('.count-num2').html(callback[2]);
+	},"json");
+	}, 5000);
+	</script>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID.-->
     <script>
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
@@ -315,5 +361,3 @@ function update()
     </script>
   </body>
 </html>
-
-

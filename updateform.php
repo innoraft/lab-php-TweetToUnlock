@@ -7,7 +7,7 @@ include "dbconnect.php";
 if(isset($_GET['tree_id']))
 {
 	$tree_id= $_GET['tree_id'];
-	$select_query= mysql_query("SELECT * FROM trees WHERE tree_id=".$tree_id."");
+	$select_query= mysql_query("SELECT * FROM donated_items WHERE tree_id=".$tree_id."");
 	$tree_array= mysql_fetch_array($select_query);
 }
 ?>
@@ -175,7 +175,7 @@ fieldset {
     </div>
     <ul class="nav navbar-nav navbar-right">
     <li class="active"><a href="profile.php"><i class="fa fa-home" aria-hidden="true"></i> HOME</a></li>
-    <li class="active"><a href="showtree.php"><i class="fa fa-home" aria-hidden="true"></i> SHOW ITEMS</a></li>
+    <li class="active"><a href="showtree.php"><i class="fa fa-home" aria-hidden="true"></i> SHOW TREES</a></li>
       <li class="active"><a href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> LOGOUT</a></li>
       </ul>
   </div>
@@ -199,7 +199,7 @@ fieldset {
     </fieldset>
     <input type="hidden" value="<?php echo $_GET['tree_id'];?>" name="hidden_tree">
     <fieldset>
-      <button name="submit" type="submit" id="contact-submit">SAVE CHANGES</button>
+      <button name="submit" type="submit" id="contact-submit" onclick="return confirm('ARE YOU SURE YOU WANT TO UPDATE?')">SAVE CHANGES</button>
     </fieldset>
    
   </form>

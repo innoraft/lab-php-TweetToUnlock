@@ -1,11 +1,14 @@
-<?php
+<?php 
 session_start();
-?>
+if(isset($_SESSION['error'])) {
+	$message = "INVALID USERNAME / PASSWORD";
+}
+?> 
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>ADMIN PORTAL</title>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
 <style>
@@ -42,6 +45,11 @@ body{
 	width: 100%;
 	height: 100%;
 }
+.align-center
+{
+	text-align: center;
+	margin: 0 auto;
+}
 </style>
 </head>
 <body>
@@ -69,7 +77,7 @@ body{
 												<span class="input-group-addon">
 													<i class="glyphicon glyphicon-user"></i>
 												</span> 
-												<input class="form-control" placeholder="Username" name="loginname" type="text" autofocus>
+												<input class="form-control" placeholder="Username" name="loginname" type="text" autofocus required>
 											</div>
 										</div>
 										<div class="form-group">
@@ -77,12 +85,13 @@ body{
 												<span class="input-group-addon">
 													<i class="glyphicon glyphicon-lock"></i>
 												</span>
-												<input class="form-control" placeholder="Password" name="password" type="password">
+												<input class="form-control" placeholder="Password" name="password" type="password" required>
 											</div>
 										</div>
 										<div class="form-group">
 											<input type="submit" class="btn btn-lg btn-primary btn-block" name="login" value="Sign in">
 										</div>
+										<div class="align-center"><span style="color: red"><?php echo $message;?></span></div>
 									</div>
 								</div>
 							</fieldset>

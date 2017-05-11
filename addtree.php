@@ -9,7 +9,7 @@ if(isset($_POST['submit']))
     $name= $_POST['name'];
     $desc= $_POST['description'];
 
-    $sql_query= mysql_query("INSERT INTO trees (name,description,image) VALUES('".$name."','".$desc."','".$target."')");
+    $sql_query= mysql_query("INSERT INTO donated_items (name,description,image) VALUES('".$name."','".$desc."','".$target."')");
 
     move_uploaded_file($_FILES['image']['tmp_name'], $target);
     $message="ADDED SUCCESSFULLY!";

@@ -8,7 +8,7 @@ if(isset($_SESSION['username'])){
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>ADMIN PORTAL</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -16,6 +16,7 @@ if(isset($_SESSION['username'])){
    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/hover.css">
 
   <style>
   body{
@@ -53,12 +54,22 @@ if(isset($_SESSION['username'])){
 	border-radius: 5px;
 	box-shadow: 0 6px 12px -6px black;
 }
-@media only screen (min-width: 768px)
+
+.bob1:before{
+  content: "\f067";
+}
+.bob2:before{
+  content: "\f03a";
+}
+/*@media only screen and (min-width: 320px) and (max-width: 767px)
   {
-  	.navbar-right li{
+  	nav ul{
   		display: none;
   	}
-  } 
+    nav ul li{
+      display: none;
+    }
+  } */
 
   </style>
 </head>
@@ -89,13 +100,13 @@ if(isset($_SESSION['username'])){
 <!-- Button trigger modal -->
 <div class="container">
 <div class="row align-center">
-<button class="tree-btn" data-toggle="modal" data-target="#myModalHorizontal"><i class="fa fa-plus fa-lg" aria-hidden="true" style=""></i> 
+<button class="tree-btn hvr-icon-bob bob1" data-toggle="modal" data-target="#myModalHorizontal"><!-- <i class="fa fa-plus" aria-hidden="true"> --></i> 
      ADD TREES
 </button>
 </div>
 <div class="row align-center">
 <form action="showtree.php" method="post">
-<button class="tree-btn"><i class="fa fa-list" aria-hidden="true"></i>
+<button class="tree-btn hvr-icon-bob bob2"><!-- <i class="fa fa-list" aria-hidden="true"> --></i>
      SHOW TREES
 </button>
 </form>
@@ -128,14 +139,14 @@ if(isset($_SESSION['username'])){
                   <div class="form-group">
                     <label  class="col-sm-2 control-label">NAME</label>
                     <div class="col-sm-10">
-                        <input type="text" name="name" class="form-control" placeholder="NAME OF THE TREE"/>
+                        <input type="text" name="name" class="form-control" placeholder="NAME OF THE TREE" required/>
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-sm-2 control-label"
                           >DESCRIPTION</label>
                     <div class="col-sm-10">
-                        <textarea class="form-control" name="description" placeholder="DESCRIPTION OF THE TREE"></textarea>
+                        <textarea class="form-control" name="description" placeholder="DESCRIPTION OF THE TREE" required></textarea>
                     </div>
                   </div>
                    <div class="form-group">

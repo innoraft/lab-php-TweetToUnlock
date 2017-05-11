@@ -5,14 +5,14 @@ session_start();
 if(isset($_GET['tree_id']))
 {
 	$tree_name_delete= $_GET['tree_id'];
-	$delete_query= mysql_query("DELETE FROM trees WHERE tree_id=".$tree_name_delete."");
+	$delete_query= mysql_query("DELETE FROM donated_items WHERE tree_id=".$tree_name_delete."");
 	header('location:showtree.php?msg=deletion_successful');
 }
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>ADMIN PORTAL</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
@@ -114,7 +114,7 @@ if(isset($_GET['tree_id']))
 		<h1>ALL TREES</h1>
 	</div>
 <?php 
-$query= mysql_query("SELECT * FROM trees");
+$query= mysql_query("SELECT * FROM donated_items");
 if(mysql_num_rows($query)> 0){
 	$i=1;
 while($row= mysql_fetch_array($query)){
@@ -131,7 +131,7 @@ while($row= mysql_fetch_array($query)){
 		<div id="buttons">
 				<a href="updateform.php?tree_id=<?php echo $row['tree_id'];?>"><button id="update">
 				<i class="fa fa-wrench aria-hidden="true"></i> UPDATE</button></a>
-				<a href="showtree.php?tree_id=<?php echo $row['tree_id'];?>"><button id="delete" name="delete" onclick="return confirm('are you sure you want to delete?')"><i class="fa fa-trash" aria-hidden="true"></i> DELETE
+				<a href="showtree.php?tree_id=<?php echo $row['tree_id'];?>"><button id="delete" name="delete" onclick="return confirm('ARE YOU SURE YOU WANT TO DELETE?')"><i class="fa fa-trash" aria-hidden="true"></i> DELETE
 				</button></a>
 		</div>
 	</div>
