@@ -2,6 +2,7 @@
 include "dbconnect.php";
 include "oauthconnect.php";
 $user_array = array();
+$donation= array();
 ?>
 
 <?php
@@ -50,10 +51,6 @@ foreach($tweets->statuses as $key=>$tweet)
 		$insert_sql = rtrim($insert_sql, "," );
 		mysql_query($insert_sql);
 
-		//$tweet_func_value= tweet_func($user_array);
-		//$user_func_value= user_func();
-		//$donated_func_value= donated_func();
-
 //-------------------end of insertion---------------------
 
 //------------------updating the trees--------------------
@@ -91,4 +88,14 @@ if(isset($_GET['moreTweetLeft']) && ($_GET['moreTweetLeft']=='yes')){
 	$donation_array[3]= $total_tweet_sum;
 	echo json_encode($donation_array);
 }
+
+// if(isset($_GET['DonationUpdate']) && ($_GET['DonationUpdate']=='yes')){
+	
+// 	$donated_array= mysql_query("SELECT * FROM donated_items");
+
+// 	while($donated_row = mysql_fetch_array($donated_array)){
+// 	   		$donation[]= $donated_row['donated'];
+// 		}
+// 		echo json_encode($donation);
+// 	}
 	?>

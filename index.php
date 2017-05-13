@@ -2,6 +2,7 @@
 //include "dbconnect.php";
 // include "oauthconnect.php";
  include "index2.php";
+ $donation_array_UI= array();
 ?>
 
 <!DOCTYPE html>
@@ -74,64 +75,6 @@
         </section>
         <!-- page 2-->
 
-<!-- <script type="text/javascript">
-$(document).ready(function(){
-
-    var auto= $('#fill-color'), refreshed_content;
-		refreshed_content = setInterval(function(){
-		auto.load("index2.php");
-		auto.fadeOut('slow').load("index.php").fadeIn("slow");},
-		3000);
-		console.log(refreshed_content);
-		return false;
-});
-</script> -->
-
-<!-- <script type="text/javascript">
-  $(document).ready(function(){
- //$('#fill-color').load(document.URL +  ' #fill-color');
- //var call = array('call' => 'update');
-
-  $(window).on( "load", function() {
-  	console.log("load func");
- $.ajax({
-    type: 'GET',
-    url: 'index2.php?call=update',
-    //data: call,
-    success: function(result){
-    	$("#fill-color").html(result);
-    }})
-  console.log('working');});
-});
-</script> -->
-
-<!-- <script type="text/javascript">
-  setInterval(
-    function(){
-  $.ajax{
-    method: 'get',
-    url: 'index2.php',
-    data: {
-      'ajax': true
-    }
-  }
-},5000);
-</script> -->
-
-<!-- <script type="text/javascript">
-  $(document).ready(function() {
-    window.setInterval(function() { loadData('index2.php'); }, 5000);
-    window.setInterval(function() { loadData('index.php', $(" #fill-color")); }, 5000);
-});
-
-var loadData = function(page, ele) {
-    $.ajax({
-        type: "GET",
-        url: page
-      });
-};
-</script>
- -->
         <section id="page2">
           <div class="content" id="page2-cont">
             <div class="container clearfix">
@@ -170,10 +113,13 @@ var loadData = function(page, ele) {
                   <h2 class="heading">A bundle of Green</h2>
                     <div class="responsive" id="tree-stack">
                         <?php
+                        $count_tree=0;
                             $donated_value_array=mysql_query("SELECT * FROM donated_items");
                               while($donated_row = mysql_fetch_array($donated_value_array)){
+                                $count_tree++;
+                                      $donation_array_UI[]= $donated_row['donated'];
                                     ?>
-                                    <div><h5><?php echo $donated_row['name'];?></h5><img src="<?php echo $donated_row['image'];?>" class="img-responsive"><h4 class="donated_count">Donated: <?php echo $donated_row['donated'];?></h4></div>
+                                    <div class="donated_trees"><h5><?php echo $donated_row['name'];?></h5><img src="<?php echo $donated_row['image'];?>" class="img-responsive"><h4>Donated: <span class="tree_no_<?php echo $count_tree;?>"><?php echo $donated_row['donated'];?></span></h4></div>
                                    <?php
                                   }
                               ?>
@@ -347,9 +293,30 @@ var loadData = function(page, ele) {
     $('.count-num').html(callback[3]);
     $('.count-num3').html(callback[1]);
     $('.count-num2').html(callback[2]);
+    // var i;
+    // for(i=1;i<=donation_callback.length;i++)
+    // {
+    // $('.tree_no_'+i).html(donation_callback[i-1]);
+    // }
 	},"json");
-	}, 5000);
+	}, 3000);
 	</script>
+
+<!-- tree stack automation -->
+  <!-- <script>
+  setInterval(function(){
+  $.post("index2.php?DonationUpdate=yes",function(donation_callback){
+  var i;
+  for(i=1;i<=donation_callback.length;i++)
+  {
+    $('.tree_no_'+i).html(donation_callback[i-1]);
+  }
+  },"json");
+  }, 3000);
+  </script>
+ -->
+
+
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID.-->
     <script>
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
