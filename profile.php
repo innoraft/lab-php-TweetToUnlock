@@ -151,7 +151,7 @@ if(isset($_SESSION['username'])){
                   </div>
                    <div class="form-group">
                     <label class="col-sm-2 control-label"
-                          >OPLOAD AN IMAGE</label>
+                          >UPLOAD AN IMAGE</label>
                     <div class="col-sm-10">
                         <input type="file" name="image" id="image" accept="image/*">
                     </div>

@@ -1,6 +1,7 @@
 <?php
 include "dbconnect.php";
 include "oauthconnect.php";
+include "variable_credentials.php";
 $user_array = array();
 ?>
 
@@ -27,7 +28,7 @@ foreach($tweets->statuses as $key=>$tweet)
 	}
 	//-------------------checking the user limitations-------------------
 	if(array_key_exists($tweet->user->id,$user_array)){
-			if($user_array[$tweet->user->id] < 5){
+			if($user_array[$tweet->user->id] < $user_tweet_allowance){
 				$user_array[$tweet->user->id]= $user_array[$tweet->user->id] + 1;
 			}
 	}
@@ -60,14 +61,14 @@ $total_tweet_sum= array_sum($user_array);  //total no. of tweets
 $total_tree_sql= mysql_query("SELECT * FROM donated_items");
 $total_trees_rows= mysql_num_rows($total_tree_sql);		//total trees
 
-$total_trees_to_donate_quotient= $total_tweet_sum/5;	//total trees
-$total_trees_to_donate_remainder= $total_tweet_sum%5;	//will be used in UI
+$total_trees_to_donate_quotient= $total_tweet_sum/$tweet_req_to_unlock;	//total trees
+$total_trees_to_donate_remainder= $total_tweet_sum%$tweet_req_to_unlock;	//will be used in UI
 
 $total_tree_division_quotient= floor($total_trees_to_donate_quotient/$total_trees_rows);
 $total_tree_division_remainder= ($total_trees_to_donate_quotient)%($total_trees_rows);
 
 $update_tree= mysql_query("UPDATE donated_items SET donated=".$total_tree_division_quotient."");
-	$update_tree_division_sql= mysql_query("UPDATE donated_items SET donated= donated + 1 ORDER BY tree_id ASC LIMIT ".$total_tree_division_remainder."");
+	$update_tree_division_sql= mysql_query("UPDATE donated_items SET donated= donated + 1 ORDER BY item_id ASC LIMIT ".$total_tree_division_remainder."");
 
 //ajax call
 // if(isset($_GET['moreTweetLeft']) && ($_GET['moreTweetLeft']=='yes')){
@@ -77,8 +78,8 @@ $update_tree= mysql_query("UPDATE donated_items SET donated=".$total_tree_divisi
 // 	$total_tree_sql= mysql_query("SELECT * FROM donated_items");
 // 	$total_trees_rows= mysql_num_rows($total_tree_sql);		//total trees
 
-// 	$total_trees_to_donate_quotient= $total_tweet_sum/5;	//total trees donated
-// 	$total_trees_to_donate_remainder= $total_tweet_sum%5;
+// 	$total_trees_to_donate_quotient= $total_tweet_sum/$tweet_req_to_unlock;	//total trees donated
+// 	$total_trees_to_donate_remainder= $total_tweet_sum%$tweet_req_to_unlock;
 
 // 	$donation_array= array();
 // 	$donation_array[0]= $total_trees_to_donate_remainder;

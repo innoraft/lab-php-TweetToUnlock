@@ -2,10 +2,10 @@
 session_start();
 ?>
 <?php
-if(isset($_GET['tree_id']))
+if(isset($_GET['item_id']))
 {
-	$tree_name_delete= $_GET['tree_id'];
-	$delete_query= mysql_query("DELETE FROM donated_items WHERE tree_id=".$tree_name_delete."");
+	$tree_name_delete= $_GET['item_id'];
+	$delete_query= mysql_query("DELETE FROM donated_items WHERE item_id=".$tree_name_delete."");
 	header('location:showtree.php?msg=deletion_successful');
 }
 ?>
@@ -129,9 +129,9 @@ while($row= mysql_fetch_array($query)){
 		<h4><?php echo $row['description'];?></h4>
 		<h3 id="donated">Donated: <?php echo $row['donated'];?></h3>
 		<div id="buttons">
-				<a href="updateform.php?tree_id=<?php echo $row['tree_id'];?>"><button id="update">
+				<a href="updateform.php?item_id=<?php echo $row['item_id'];?>"><button id="update">
 				<i class="fa fa-wrench aria-hidden="true"></i> UPDATE</button></a>
-				<a href="showtree.php?tree_id=<?php echo $row['tree_id'];?>"><button id="delete" name="delete" onclick="return confirm('ARE YOU SURE YOU WANT TO DELETE?')"><i class="fa fa-trash" aria-hidden="true"></i> DELETE
+				<a href="showtree.php?item_id=<?php echo $row['item_id'];?>"><button id="delete" name="delete" onclick="return confirm('ARE YOU SURE YOU WANT TO DELETE?')"><i class="fa fa-trash" aria-hidden="true"></i> DELETE
 				</button></a>
 		</div>
 	</div>

@@ -1,6 +1,7 @@
 <?php
 // header("Access-Control-Allow-Origin: *");
 include "dbconnect.php";
+include "variable_credentials.php";
 $donation_array= array();
 $donation= array();
 ?>
@@ -24,9 +25,10 @@ if(isset($_GET['moreTweetLeft']) && ($_GET['moreTweetLeft']=='yes')){
 	$total_tree_sql= mysql_query("SELECT * FROM donated_items");
 	$total_trees_rows= mysql_num_rows($total_tree_sql);		//total trees
 
-	$total_trees_to_donate_quotient= $total_tweet_sum/5;	//total trees donated
-	$total_trees_to_donate_remainder= $total_tweet_sum%5;
+	$total_trees_to_donate_quotient= $total_tweet_sum/$tweet_req_to_unlock;	//total trees donated
+	$total_trees_to_donate_remainder= $total_tweet_sum%$tweet_req_to_unlock;
 
+	
 	$donation_array[0]= $total_trees_to_donate_remainder;
 	$donation_array[1]= $total_users;
 	$donation_array[2]= floor($total_trees_to_donate_quotient);

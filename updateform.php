@@ -4,10 +4,10 @@ include "dbconnect.php";
 ?>
 <?php 
 
-if(isset($_GET['tree_id']))
+if(isset($_GET['item_id']))
 {
-	$tree_id= $_GET['tree_id'];
-	$select_query= mysql_query("SELECT * FROM donated_items WHERE tree_id=".$tree_id."");
+	$item_id= $_GET['item_id'];
+	$select_query= mysql_query("SELECT * FROM donated_items WHERE item_id=".$item_id."");
 	$tree_array= mysql_fetch_array($select_query);
 }
 ?>
@@ -197,7 +197,7 @@ fieldset {
       <img src="<?php echo $tree_array['image'];?>" width="50" height="50">
       <input type="file" name="image_path" id="image_path" accept="image/*">
     </fieldset>
-    <input type="hidden" value="<?php echo $_GET['tree_id'];?>" name="hidden_tree">
+    <input type="hidden" value="<?php echo $_GET['item_id'];?>" name="hidden_tree">
     <fieldset>
       <button name="submit" type="submit" id="contact-submit" onclick="return confirm('ARE YOU SURE YOU WANT TO UPDATE?')">SAVE CHANGES</button>
     </fieldset>

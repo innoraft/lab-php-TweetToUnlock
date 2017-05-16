@@ -1,4 +1,5 @@
 <?php
-$con = mysql_connect('localhost','root','1234');
-mysql_select_db('twitter',$con);
+include "variable_credentials.php";
+$con = mysql_connect($servername,$username,$password);
+mysql_select_db($dbname,$con);
 ?>

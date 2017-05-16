@@ -2,8 +2,8 @@
 //include "dbconnect.php";
 // include "oauthconnect.php";
  include "index2.php";
+ include "variable_credentials.php"
  // include "ajaxcall.php";
- $donation_array_UI= array();
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +63,7 @@
                       <span class="wrap"></span>
                     </a>
                   </h1>
-                  <h3>#eco_tweet</h3>
+                  <h3>#<?php echo $hashtag; ?></h3>
                   <p>“ Look deep into nature from the earth book and  plant more tree as it never charge a fee. ”</p>
                   <p>Your contribution: An immediate difference.</p>
                   <p>~ An initiative by INNORAFT ~</p>
@@ -86,7 +86,7 @@
                   <p class="p-tags">Cast your tweet and we will donate a tree on your behalf. Your each tweet is valuable for the environment.</p>
                   <div id="tweet-button-div">
 						<a class="hvr-bounce-to-top twitter-btn" target="_blank"
-			 			href="https://twitter.com/intent/tweet?text=spread%20the%20words%20%23eco_tweet%20@ecotweet.sites.innoraft.com"
+			 			href="https://twitter.com/intent/tweet?text=spread%20the%20words%20%23<?php echo $hashtag; ?>%20@ecotweet.sites.innoraft.com"
 			  			><i class="fa fa-twitter twitter-icon" aria-hidden="true"></i>Click To Tweet</a>
   					</div>
                 </div>
@@ -97,7 +97,7 @@
                    </div>
                 </div>
                  </div>
-                 <div class="tweet-rem" style="text-align: center;"><h4><?php echo (5-$total_trees_to_donate_remainder);?> more tweet to unlock</h4></div>
+                 <div class="tweet-rem" style="text-align: center;"><h4><?php echo ($tweet_req_to_unlock-$total_trees_to_donate_remainder);?> more tweet to unlock</h4></div>
               </div>
 
 
