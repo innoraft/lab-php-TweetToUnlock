@@ -2,7 +2,6 @@
 include "dbconnect.php";
 include "oauthconnect.php";
 $user_array = array();
-$donation= array();
 ?>
 
 <?php
@@ -71,23 +70,23 @@ $update_tree= mysql_query("UPDATE donated_items SET donated=".$total_tree_divisi
 	$update_tree_division_sql= mysql_query("UPDATE donated_items SET donated= donated + 1 ORDER BY tree_id ASC LIMIT ".$total_tree_division_remainder."");
 
 //ajax call
-if(isset($_GET['moreTweetLeft']) && ($_GET['moreTweetLeft']=='yes')){
-	$total_users= mysql_num_rows(mysql_query("SELECT * FROM users"));  //total no. of users
-	$total_tweet_sum= array_sum($user_array);  //total no. of tweets
+// if(isset($_GET['moreTweetLeft']) && ($_GET['moreTweetLeft']=='yes')){
+// 	$total_users= mysql_num_rows(mysql_query("SELECT * FROM users"));  //total no. of users
+// 	$total_tweet_sum= array_sum($user_array);  //total no. of tweets
 
-	$total_tree_sql= mysql_query("SELECT * FROM donated_items");
-	$total_trees_rows= mysql_num_rows($total_tree_sql);		//total trees
+// 	$total_tree_sql= mysql_query("SELECT * FROM donated_items");
+// 	$total_trees_rows= mysql_num_rows($total_tree_sql);		//total trees
 
-	$total_trees_to_donate_quotient= $total_tweet_sum/5;	//total trees donated
-	$total_trees_to_donate_remainder= $total_tweet_sum%5;
+// 	$total_trees_to_donate_quotient= $total_tweet_sum/5;	//total trees donated
+// 	$total_trees_to_donate_remainder= $total_tweet_sum%5;
 
-	$donation_array= array();
-	$donation_array[0]= $total_trees_to_donate_remainder;
-	$donation_array[1]= $total_users;
-	$donation_array[2]= floor($total_trees_to_donate_quotient);
-	$donation_array[3]= $total_tweet_sum;
-	echo json_encode($donation_array);
-}
+// 	$donation_array= array();
+// 	$donation_array[0]= $total_trees_to_donate_remainder;
+// 	$donation_array[1]= $total_users;
+// 	$donation_array[2]= floor($total_trees_to_donate_quotient);
+// 	$donation_array[3]= $total_tweet_sum;
+// 	echo json_encode($donation_array);
+// }
 
 // if(isset($_GET['DonationUpdate']) && ($_GET['DonationUpdate']=='yes')){
 	

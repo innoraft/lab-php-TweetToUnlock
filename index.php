@@ -2,6 +2,7 @@
 //include "dbconnect.php";
 // include "oauthconnect.php";
  include "index2.php";
+ // include "ajaxcall.php";
  $donation_array_UI= array();
 ?>
 
@@ -17,7 +18,6 @@
     <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
     <!-- Bootstrap and Font Awesome css-->
     <!-- we use cdn but you can also include local files located in css directory-->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/font-awesome-animation.min.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <!-- Google fonts - Montserrat for headings, Cardo for copy-->
@@ -105,7 +105,6 @@
         </section>
         <!-- page 3 - class section-gray adds gray background-->
         <section id="page3" class="section-gray">
-        <!-- <div class="overlay"></div> -->
           <div class="content">
             <div class="container clearfix">
               <div class="row services">
@@ -286,26 +285,21 @@
     <script src="js/front.js"></script>
 	<script>
   setInterval(function(){
-	$.post("index2.php?moreTweetLeft=yes",function(callback){
+	$.post("ajaxcall.php?moreTweetLeft=yes",function(callback){
 		$('.tweet-rem').html('<h4>'+(5-callback[0])+' more tweet to unlock</h4>');
 		var hper = callback[0] * 20;
 		$('#fill-color').css('height',hper+'%');
     $('.count-num').html(callback[3]);
     $('.count-num3').html(callback[1]);
     $('.count-num2').html(callback[2]);
-    // var i;
-    // for(i=1;i<=donation_callback.length;i++)
-    // {
-    // $('.tree_no_'+i).html(donation_callback[i-1]);
-    // }
 	},"json");
 	}, 3000);
 	</script>
 
 <!-- tree stack automation -->
-  <!-- <script>
+  <script>
   setInterval(function(){
-  $.post("index2.php?DonationUpdate=yes",function(donation_callback){
+  $.post("ajaxcall2.php?DonationUpdate=yes",function(donation_callback){
   var i;
   for(i=1;i<=donation_callback.length;i++)
   {
@@ -314,7 +308,7 @@
   },"json");
   }, 3000);
   </script>
- -->
+
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID.-->
