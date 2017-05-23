@@ -13,6 +13,7 @@ if(isset($_GET['item_id']))
 <html>
 <head>
 	<title>ADMIN PORTAL</title>
+  
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
@@ -121,10 +122,10 @@ while($row= mysql_fetch_array($query)){
 ?>
 
 <div class="row row-tree">
-	<div class="col-md-3 col-sm-4">
+	<div class="col-md-3 col-sm-4 col-xs-3">
 	<img src="<?php echo $row['image'];?>" class="tree-img">
 	</div>
-	<div class="col-md-9 col-sm-8">
+	<div class="col-md-9 col-sm-8 col-xs-9">
 		<h2><?php echo $row['name'];?></h2>
 		<h4><?php echo $row['description'];?></h4>
 		<h3 id="donated">Donated: <?php echo $row['donated'];?></h3>

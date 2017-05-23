@@ -9,8 +9,10 @@ if(isset($_SESSION['error'])) {
 <html>
 <head>
 	<title>ADMIN PORTAL</title>
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
+<!-- <link rel="stylesheet" type="text/css" href="css/admin.css"> -->
 <style>
 body{
 	background-color: #eeeeee;
@@ -50,13 +52,19 @@ body{
 	text-align: center;
 	margin: 0 auto;
 }
+@media only screen and (min-width: 320px) and (max-width: 467px)
+{
+	.cont{
+		width: 100vw;
+	}
+}
 </style>
 </head>
 <body>
     <div class="container cont">
     <div class="overlay"></div>
 		<div class="row">
-			<div class="col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4">
+			<div class="col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 col-xs-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<strong> Sign in to continue</strong>
