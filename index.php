@@ -13,7 +13,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>eco tweet</title>
-    <!-- <meta name="description" content=""> -->
+    <meta name="description" content="Lets make the world a better place, help us to donate a tree by giving your valuable tweet. Your contribution will make an immediate difference.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
