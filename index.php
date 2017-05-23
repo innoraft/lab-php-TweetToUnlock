@@ -7,12 +7,13 @@
 ?>
 
 <!DOCTYPE html>
-<html class="no-js">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:fb="http://ogp.me/ns/fb#" class="no-js">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>eco tweet</title>
-    <meta name="description" content="">
+    <!-- <meta name="description" content=""> -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
@@ -40,8 +41,14 @@
     <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="css/custom.css">
-    <!-- Favicon-->
-    <link rel="shortcut icon" href="favicon.png">
+
+    <meta property="og:type" content="website" />
+<meta property="og:title" content="WELCOME TO ECOTWEET" />
+<meta property="og:description" content="Lets make the world a better place, help us to donate a tree by giving your valuable tweet. Your contribution will make an immediate difference." />
+<meta property="og:url" content="http://ecotweet.sites.innoraft.com" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image" content="http://ecotweet.sites.innoraft.com/img/thumbnail.jpeg" />
+<meta property="og:site_name" content="ECO_TWEET" />
 
   </head>
   <body>
@@ -71,7 +78,8 @@
               </div>
             </div>
           </div>
-          <div class="icon faa-float animated"><i class="fa fa-angle-double-down"></i></div>
+         
+          <!-- <div class="icon faa-float animated"><i class="fa fa-angle-double-down" id="downbtn"></i></div> -->
         </section>
         <!-- page 2-->
 
