@@ -10,10 +10,13 @@ $user_array = array();
 $fetch_users= mysql_query("SELECT * FROM users");
 
 	while($user_row = mysql_fetch_array($fetch_users)){
-	   		$user_array[$user_row['user_id']] = $user_row['t_count'];
+	   		$user_array[$user_row['user_id']][0] = $user_row['user_name'];
+	   		$user_array[$user_row['user_id']][1] = $user_row['last_tweet_time'];
+	   		$user_array[$user_row['user_id']][2] = $user_row['t_count'];
 		}
 //----------------------------end of data fetching from db----------------------
-
+// print_r($user_array);
+// exit();
 //-------------fetching the tweets from twitter and updating the user array----------------
 foreach($tweets->statuses as $key=>$tweet)
 {
@@ -28,26 +31,33 @@ foreach($tweets->statuses as $key=>$tweet)
 	}
 	//-------------------checking the user limitations-------------------
 	if(array_key_exists($tweet->user->id,$user_array)){
-			if($user_array[$tweet->user->id] < $user_tweet_allowance){
-				$user_array[$tweet->user->id]= $user_array[$tweet->user->id] + 1;
+			if($user_array[$tweet->user->id][2] < $user_tweet_allowance){
+				$user_array[$tweet->user->id][0]= $tweet->user->screen_name;
+				$user_array[$tweet->user->id][1]= strtotime($tweet->created_at);
+				$user_array[$tweet->user->id][2]= $user_array[$tweet->user->id][2] + 1;
 			}
 	}
 	else{
-		$user_array[$tweet->user->id]=1;
+		$user_array[$tweet->user->id][0]= $tweet->user->screen_name;
+		$user_array[$tweet->user->id][1]= strtotime($tweet->created_at);
+		$user_array[$tweet->user->id][2]= 1;
 	}
 }
 //---------------------end of fetching-----------------------
-//print_r($user_array);
+// print_r($user_array);
+// exit();
 ?>
 
 <?php
 //---------------inserting the array values in database---------------
 		$truncate_sql= mysql_query("TRUNCATE users");
 
-		$insert_sql= "INSERT INTO users(user_id,t_count) VALUES";
-		foreach ($user_array as $u_id=>$t_c) {
-		    $insert_sql .= "('".$u_id."', ".$t_c."),";
+		$insert_sql= "INSERT INTO users(user_id,user_name,last_tweet_time,t_count) VALUES";
+		foreach ($user_array as $key=>$value) {
+		    $insert_sql .= "('".$key."', '".$value[0]."', '".$value[1]."', ".$value[2]."),";
 		}
+		// print_r($insert_sql);
+		// exit();
 		$insert_sql = rtrim($insert_sql, "," );
 		mysql_query($insert_sql);
 
@@ -56,7 +66,9 @@ foreach($tweets->statuses as $key=>$tweet)
 //------------------updating the trees--------------------
 
 $total_users= mysql_num_rows(mysql_query("SELECT * FROM users"));  //total no. of users
-$total_tweet_sum= array_sum($user_array);  //total no. of tweets
+$total_tweet_sum_sql= mysql_query("SELECT SUM(t_count) AS val FROM users"); 
+	$total_tweet_sum_arr= mysql_fetch_assoc($total_tweet_sum_sql);
+	$total_tweet_sum= $total_tweet_sum_arr['val'];  //total no. of tweets
 
 $total_tree_sql= mysql_query("SELECT * FROM donated_items");
 $total_trees_rows= mysql_num_rows($total_tree_sql);		//total trees

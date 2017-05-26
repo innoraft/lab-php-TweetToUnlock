@@ -92,11 +92,47 @@
                   <p class="lead">TWEET TO UNLOCK</p>
                   <p class="p-tags">We control the growth of every other species except our own</p>
                   <p class="p-tags">Cast your tweet and we will donate a tree on your behalf. Your each tweet is valuable for the environment.</p>
+
+
+<!-- random message generator -->
+                  <script>
+                        var quote = new Array()
+    quote[0] = 'Save Trees, Save Environment'
+    quote[1] = 'Save the Earth, start planting'
+    quote[2] = 'The key to a greener planet is in your hands'
+    quote[3] = 'It is our duty to save environment\'s beauty'
+    quote[4] = 'The best time to plant tree was 20 years ago. The next best time is now'
+    quote[5] = 'Your contribution will make an immediate difference'
+    quote[6] = 'Lets go green to make our globe green'
+    quote[7] = 'Better environment,better tomorrow'
+
+  function tweet(message) {
+  window.open('https://twitter.com/intent/tweet?hashtags=<?php echo $hashtag; ?>&text='+ encodeURIComponent(message));
+}
+
+var msg;
+
+$(document).ready(function() {
+  $("#tweet-button-div").on("click", function(){
+    // console.log("working");
+    var randomquote = Math.floor(Math.random()*(quote.length-1));
+    msg = quote[randomquote];
+    // $(".message").html(msg);
+    console.log(msg);
+    tweet(msg);
+  });
+});
+                  </script>
+
                   <div id="tweet-button-div">
+            <a class="hvr-bounce-to-top twitter-btn"><i class="fa fa-twitter twitter-icon" aria-hidden="true" id="tweet_button"></i>Click To Tweet</a>
+            </div>
+
+                  <!-- <div id="tweet-button-div">
 						<a class="hvr-bounce-to-top twitter-btn" target="_blank"
-			 			href="https://twitter.com/intent/tweet?text=spread%20the%20words%20%23<?php echo $hashtag; ?>%20@ecotweet.sites.innoraft.com"
-			  			><i class="fa fa-twitter twitter-icon" aria-hidden="true"></i>Click To Tweet</a>
-  					</div>
+			 			href="https://twitter.com/intent/tweet?text=spread%20the%20words%20&hashtag=<?php echo $hashtag; ?>%20@ecotweet.sites.innoraft.com"
+			  			><i class="fa fa-twitter twitter-icon" aria-hidden="true" id="tweet_button"></i>Click To Tweet</a>
+  					</div> -->
                 </div>
                 <div class="col-sm-5 col-md-5 col-md-offset-1 tree-col">
                   <div class="tree-wrapper">
@@ -274,6 +310,7 @@
                       </ul>
                     </div>
                 <div class="copyright cr" style="text-align: center;"><p>Copyright 2017. All Right Reserved.</p></div>
+                <p id="admin-portal"><a href="login.php" id="admin"><i class="fa fa-cog" aria-hidden="true"></i> ADMIN PORTAL</a></p>
                   </div>
                   </div>
                 </div>

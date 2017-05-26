@@ -30,6 +30,8 @@ if(isset($_SESSION['username'])){
    .align-center img{
   	background-color: #eeeeee;
   	border-radius: 50%;
+    width: 150px;
+    height: 150px;
     }
 
   .modal-body .form-horizontal .col-sm-2,
@@ -61,6 +63,36 @@ if(isset($_SESSION['username'])){
 .bob2:before{
   content: "\f03a";
 }
+.bob3:before{
+  content: "\f099";
+}
+#welcome-tag{
+  margin: 0;
+}
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+#add-tree:hover .tooltiptext {
+    visibility: visible;
+}
+
 /*@media only screen and (min-width: 320px) and (max-width: 767px)
   {
   	nav ul{
@@ -88,32 +120,40 @@ if(isset($_SESSION['username'])){
   </div>
 </nav>
 
+<div class="wrapper">
 <div class="align-center">
 <img src="img/eco_logo_1.png">
 </div>
 
 <div class="align-center">
-<h1>WELCOME TO ECO TWEET</h1>
+<h1 id="welcome-tag">WELCOME TO ECO TWEET</h1>
 </div>
 
 
 <!-- Button trigger modal -->
 <div class="container">
 <div class="row align-center">
-<button class="tree-btn hvr-icon-bob bob1" data-toggle="modal" data-target="#myModalHorizontal"><!-- <i class="fa fa-plus" aria-hidden="true"> --></i> 
-     ADD TREES
-</button>
+<button class="tree-btn hvr-icon-bob bob1" data-toggle="modal" data-target="#myModalHorizontal" id="add-tree"> 
+     ADD TREES</button>
+     <!-- <span class="tooltiptext">ADD A NEW TREE TO THE DONATION STACK</span> -->
 </div>
 <div class="row align-center">
 <form action="showtree.php" method="post">
-<button class="tree-btn hvr-icon-bob bob2"><!-- <i class="fa fa-list" aria-hidden="true"> --></i>
+<button class="tree-btn hvr-icon-bob bob2">
      SHOW TREES
+</button>
+</form>
+</div>
+<div class="row align-center">
+<form action="showtweet.php" method="post">
+<button class="tree-btn hvr-icon-bob bob3">
+     SHOW TWEETS
 </button>
 </form>
 </div>
 
 </div>
-
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog" 

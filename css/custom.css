@@ -263,14 +263,18 @@ h1{
 	/*text-align: center;*/
 
 }
-
+#admin-portal{
+	text-align: right;
+}
 .hvr-grow {
 	display: inherit;
 	margin-bottom: 20px;
 }
 
 @media only screen and (max-width: 479px) {
-
+	.count-num,.count-num2,.count-num3,.count-num4{
+		font-size: 50px;
+	}
 	.twitter-btn{
 		padding: 15px 30px;
 		font-size: 22px;
@@ -390,7 +394,10 @@ h1{
 .responsive .slick-prev {
     left: 16px;
 }
+#admin-portal{
+	text-align: center;
 	}
+}
 
 @media screen and (max-width:479px) {
 		img.tree-img {
@@ -473,3 +480,9 @@ a{
 	bottom:10px;
 	}
 
+#admin{
+	color: grey;
+}
+#admin:hover{
+	color: #348e7b;
+}

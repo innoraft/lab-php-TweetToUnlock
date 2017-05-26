@@ -13,7 +13,7 @@ if(isset($_GET['item_id']))
 <html>
 <head>
 	<title>ADMIN PORTAL</title>
-  
+
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
@@ -130,7 +130,7 @@ while($row= mysql_fetch_array($query)){
 		<h4><?php echo $row['description'];?></h4>
 		<h3 id="donated">Donated: <?php echo $row['donated'];?></h3>
 		<div id="buttons">
-				<a href="updateform.php?item_id=<?php echo $row['item_id'];?>"><button id="update">
+				<a href="updateform.php?item_id=<?php echo $row['item_id'];?>"><button id="update" name="update">
 				<i class="fa fa-wrench aria-hidden="true"></i> UPDATE</button></a>
 				<a href="showtree.php?item_id=<?php echo $row['item_id'];?>"><button id="delete" name="delete" onclick="return confirm('ARE YOU SURE YOU WANT TO DELETE?')"><i class="fa fa-trash" aria-hidden="true"></i> DELETE
 				</button></a>

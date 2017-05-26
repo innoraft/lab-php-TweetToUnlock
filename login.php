@@ -85,7 +85,7 @@ body{
 												<span class="input-group-addon">
 													<i class="glyphicon glyphicon-user"></i>
 												</span> 
-												<input class="form-control" placeholder="Username" name="loginname" type="text" autofocus required>
+												<input class="form-control" placeholder="Username" name="loginname" type="email" autofocus required>
 											</div>
 										</div>
 										<div class="form-group">
