@@ -39,7 +39,7 @@ $num=mysql_num_rows($fetch);
 body{font-size: 14px; line-height: 18px; font-family: "Oswald";}
 .page-header{margin-top: 0px;  border-bottom: 1px solid #1995DC; padding-bottom: 0px; }
 .page-header h1{margin-top: 0px; font-size: 24px;}
-#next,#prev{ width: 100px; height: 30px; font-size: 18px; background-color: #217def; color: white; border-style: none; margin: 10px;}
+#next,#prev{ width: 100px; height: 30px; font-size: 16px; background-color: #217def; color: white; border-style: none; margin: 10px;}
 #next:hover,#prev:hover{ background-color: #024291; transition-duration: 0.2s; }
 th{ background-color: #eeeeee; }
 #datatable{ font-family: "Montserrat";}
@@ -63,7 +63,7 @@ th{ background-color: #eeeeee; }
   
 <div class="container mainbody">
   <div class="page-header">
-    <h1>CONTIBUTORS AND THEIR TWEETS</h1>
+    <h1>CONTIBUTORS & TWEETS</h1>
   </div>
   <div class="clearfix"></div>
   <div class="table-responsive">
@@ -121,14 +121,16 @@ th{ background-color: #eeeeee; }
     </table>
     </div>
     <?php
-   
-       echo $count_records==10?'<a href="'.$_SERVER['PHP_SELF'].'?sort_element='.$_GET['sort_element'].'&startrow='.($startrow+10).'&sort_type='.$_GET['sort_type'].'"><button id="next">Next</button></a>':'<button style="display: none;">Next</button>';
+        $total_rows=mysql_num_rows(mysql_query("SELECT * FROM users"));
+        $total_tweets=mysql_fetch_assoc(mysql_query("SELECT SUM(t_count) AS value FROM users"));
+        $total_tweets_val=$total_tweets['value'];
+       echo $count_records==10?'<a href="'.$_SERVER['PHP_SELF'].'?sort_element='.$_GET['sort_element'].'&startrow='.($startrow+10).'&sort_type='.$_GET['sort_type'].'"><button id="next">NEXT</button></a>':'<button style="display: none;">NEXT</button>';
         //only print a "Previous" link if a "Next" was clicked
     $prev = $startrow - 10;
     if ($prev >= 0){
-    echo '<a href="'.$_SERVER['PHP_SELF'].'?sort_element='.$_GET['sort_element'].'&startrow='.$prev.'&sort_type='.$_GET['sort_type'].'"><button id="prev">Previous</button></a>';
+    echo '<a href="'.$_SERVER['PHP_SELF'].'?sort_element='.$_GET['sort_element'].'&startrow='.$prev.'&sort_type='.$_GET['sort_type'].'"><button id="prev">PREVIOUS</button></a>';
     }
-    echo '';
+    echo '<span style="float:right; padding-right:10%; font-size:18px; margin:10px;">TOTAL CONTRIBUTORS : '.$total_rows.'</span> <span style="float:right;font-size:18px; margin:10px;">TOTAL TWEETS : '.$total_tweets_val.' ,</span>';
   ?>
   
 </div>
