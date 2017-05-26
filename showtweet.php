@@ -25,6 +25,7 @@ $num=mysql_num_rows($fetch);
 
 <html>
 <head>
+<title>ADMIN PORTAL</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -35,21 +36,9 @@ $num=mysql_num_rows($fetch);
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="css/hover.css">
     <style>
-    html, body{height: 100%; }
 body{font-size: 14px; line-height: 18px; font-family: "Oswald";}
-.mainbody{min-height: 100%;}
-.mainbody .row{margin: 0px;}
 .page-header{margin-top: 0px;  border-bottom: 1px solid #1995DC; padding-bottom: 0px; }
 .page-header h1{margin-top: 0px; font-size: 24px;}
-.panel-body {width: 100%; margin: 0 auto;}
-.panel-body .col-lg-3{margin:25px; border: 1px solid #006bd6; padding: 10px; }
-.adjustImage{ border: 1px solid #000; text-align:center; width:auto; margin:0 auto; }
-.adjustImage img{max-width: 200px; max-height: 200px;}
-.textContainer{width: 100%; padding-top: 10px; }
-.btn-social{padding-top: 5px;}
-.footer{ margin:0; padding: 17px 0; border-radius: 0px; height: auto; }
-.copyright{ color: #fff; text-align: center; }
-.copyright a{ color: #fff; }
 #next,#prev{ width: 100px; height: 30px; font-size: 18px; background-color: #217def; color: white; border-style: none; margin: 10px;}
 #next:hover,#prev:hover{ background-color: #024291; transition-duration: 0.2s; }
 th{ background-color: #eeeeee; }
