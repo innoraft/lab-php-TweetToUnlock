@@ -73,7 +73,7 @@ th{ background-color: #eeeeee; }
      
 
       <th>
-        <a title="Click to sort by USER ID" href="showtweet.php?sort_element=user_name&startrow=<?php echo $startrow; ?>&sort_type=<?php echo ($_REQUEST["sort_element"] == "user_name"  && $_REQUEST["sort_type"] == "asc") ? "desc" : "asc"; ?>">USER NAME
+        <a title="Click to sort by USER NAME" href="showtweet.php?sort_element=user_name&startrow=<?php echo $startrow; ?>&sort_type=<?php echo ($_REQUEST["sort_element"] == "user_name"  && $_REQUEST["sort_type"] == "asc") ? "desc" : "asc"; ?>">USER NAME
         <?php if ($_REQUEST["sort_element"] == "user_name" ) {  if($_REQUEST["sort_type"] == "desc" ) { ?>
         <img class="sorting" src="img/arrowtop.png" alt="asc" style="margin-bottom: 3px;">
         <?php } else { ?>
@@ -83,7 +83,7 @@ th{ background-color: #eeeeee; }
       </th>
 
       <th>
-        <a title="Click to sort by USER ID" href="showtweet.php?sort_element=last_tweet_time&startrow=<?php echo $startrow; ?>&sort_type=<?php echo ($_REQUEST["sort_element"] == "last_tweet_time"  && $_REQUEST["sort_type"] == "asc") ? "desc" : "asc"; ?>">LAST TWEETED
+        <a title="Click to sort by LAST TWEETED" href="showtweet.php?sort_element=last_tweet_time&startrow=<?php echo $startrow; ?>&sort_type=<?php echo ($_REQUEST["sort_element"] == "last_tweet_time"  && $_REQUEST["sort_type"] == "asc") ? "desc" : "asc"; ?>">LAST TWEETED
         <?php if ($_REQUEST["sort_element"] == "last_tweet_time" ) {  if($_REQUEST["sort_type"] == "desc" ) { ?>
         <img class="sorting" src="img/arrowtop.png" alt="asc" style="margin-bottom: 3px;">
         <?php } else { ?>
