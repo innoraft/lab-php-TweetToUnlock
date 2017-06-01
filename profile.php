@@ -66,31 +66,14 @@ if(isset($_SESSION['username'])){
 .bob3:before{
   content: "\f099";
 }
+.bob4:before{
+  content: "\f007";
+}
 #welcome-tag{
   margin: 0;
 }
-.tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black;
-}
-
-.tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-
-    /* Position the tooltip */
-    position: absolute;
-    z-index: 1;
-}
-
-#add-tree:hover .tooltiptext {
-    visibility: visible;
+.confirmMessage{
+  font-size: 14px;
 }
 
 /*@media only screen and (min-width: 320px) and (max-width: 767px)
@@ -133,6 +116,11 @@ if(isset($_SESSION['username'])){
 <!-- Button trigger modal -->
 <div class="container">
 <div class="row align-center">
+<button class="tree-btn hvr-icon-bob bob4" data-toggle="modal" data-target="#AddAdmin" id="add-admin"> 
+     ADD ADMIN</button>
+     <!-- <span class="tooltiptext">ADD A NEW TREE TO THE DONATION STACK</span> -->
+</div>
+<div class="row align-center">
 <button class="tree-btn hvr-icon-bob bob1" data-toggle="modal" data-target="#myModalHorizontal" id="add-tree"> 
      ADD TREES</button>
      <!-- <span class="tooltiptext">ADD A NEW TREE TO THE DONATION STACK</span> -->
@@ -153,6 +141,86 @@ if(isset($_SESSION['username'])){
 </div>
 
 </div>
+</div>
+
+<script>
+            function checkPass()
+            {
+                var pass1 = document.getElementById('password');
+                var pass2 = document.getElementById('confirm_password');
+                var message = document.getElementById('confirmMessage');
+                var goodColor = "#66cc66";
+                var badColor = "#ff6666";
+                if(pass1.value == pass2.value){
+                    pass2.style.backgroundColor = goodColor;
+                    message.style.color = goodColor;
+                    message.innerHTML = "Passwords Match!"
+                }else{
+                    pass2.style.backgroundColor = badColor;
+                    message.style.color = badColor;
+                    message.innerHTML = "Passwords Do Not Match!"
+                }
+            }  
+            </script>
+            
+<div class="modal fade" id="AddAdmin" tabindex="-1" role="dialog" 
+     aria-labelledby="AdminLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" 
+                   data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="AdminLabel">
+                    ADD A NEW ADMIN
+                </h4>
+            </div>            
+            <!-- Modal Body -->
+            <div class="modal-body">
+                
+                <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data" action="#" id="admin-form">
+                  <div class="form-group">
+                    <label  class="col-sm-2 control-label">NAME</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="name" class="form-control" placeholder="NAME OF THE ADMIN" id="admin_name" required/>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">EMAIL ID</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" name="email" placeholder="EMAIL ID OF THE ADMIN" required>
+                    </div>
+                  </div>
+                   <div class="form-group">
+                    <label class="col-sm-2 control-label">PASSWORD</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" name="password" placeholder="ENTER A PASSWORD" id="password" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">CONFIRM PASSWORD</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" name="confirm_password" placeholder="RE-ENTER THE PASSWORD" id="confirm_password" onkeyup="checkPass(); return false;" required>
+                         <span id="confirmMessage" class="confirmMessage"></span>
+                    </div>
+                  </div>
+
+                   <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">
+                            CLOSE
+                </button>
+                <button type="submit" class="btn btn-primary" name="submit">
+                    ADD ADMIN
+                </button>
+            </div>
+                    </form>
+                  </div>          
+        </div>
+    </div>
 </div>
 
 <!-- Modal -->
