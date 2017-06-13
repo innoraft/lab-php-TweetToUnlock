@@ -2,8 +2,30 @@
 <?php
 session_start();
 ?>
+<?php
+if(isset($_SESSION['admin_exist']))
+{
+  ?>
+<script type="text/javascript">
+  alert("EMAIL ALREADY REGISTERED AS ADMIN !!");
+</script>
+  <?php
+}
+?>
+
+<?php
+if(isset($_SESSION['admin_added']))
+{
+  ?>
+<script type="text/javascript">
+  alert("ADMIN ADDED AND INVITATION MAIL HAS BEEN SENT SUCCESSFULLY");
+</script>
+  <?php
+}
+?>
+
 <?php 
-if(isset($_SESSION['username'])){
+if(isset($_SESSION['username']) && isset($_SESSION['name'])){
 ?>
 <!DOCTYPE html>
 <html>
@@ -93,7 +115,7 @@ if(isset($_SESSION['username'])){
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">WELCOME ADMIN</a>
+      <a class="navbar-brand" href="#" style="text-transform: uppercase;">WELCOME <?php echo $_SESSION['name'];?></a>
     </div>
     <ul class="nav navbar-nav navbar-right">
     <li class="active"><a href="profile.php"><i class="fa fa-home" aria-hidden="true"></i> HOME</a></li>
@@ -162,6 +184,15 @@ if(isset($_SESSION['username'])){
                 }
             }  
             </script>
+
+            <!-- <script>
+            $(document).ready(function () {
+              $('#AddAdmin').on('hidden.bs.modal', function () {
+                  var $form = $('#AddAdmin');
+                  $form.validate().resetForm();
+                  $form.find('.pchck').removeClass('.pchck');
+            });
+            </script> -->
             
 <div class="modal fade" id="AddAdmin" tabindex="-1" role="dialog" 
      aria-labelledby="AdminLabel" aria-hidden="true">
@@ -170,7 +201,7 @@ if(isset($_SESSION['username'])){
             <!-- Modal Header -->
             <div class="modal-header">
                 <button type="button" class="close" 
-                   data-dismiss="modal">
+                   data-dismiss="modal" onclick="window.location.reload()">
                        <span aria-hidden="true">&times;</span>
                        <span class="sr-only">Close</span>
                 </button>
@@ -181,7 +212,7 @@ if(isset($_SESSION['username'])){
             <!-- Modal Body -->
             <div class="modal-body">
                 
-                <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data" action="#" id="admin-form">
+                <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data" action="addadmin.php" id="admin-form">
                   <div class="form-group">
                     <label  class="col-sm-2 control-label">NAME</label>
                     <div class="col-sm-10">
@@ -197,21 +228,19 @@ if(isset($_SESSION['username'])){
                    <div class="form-group">
                     <label class="col-sm-2 control-label">PASSWORD</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" name="password" placeholder="ENTER A PASSWORD" id="password" required>
+                        <input type="password" class="form-control pcheck" name="password" placeholder="ENTER A PASSWORD" id="password" required>
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-sm-2 control-label">CONFIRM PASSWORD</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" name="confirm_password" placeholder="RE-ENTER THE PASSWORD" id="confirm_password" onkeyup="checkPass(); return false;" required>
+                        <input type="password" class="form-control pcheck" name="confirm_password" placeholder="RE-ENTER THE PASSWORD" id="confirm_password" onkeyup="checkPass(); return false;" required>
                          <span id="confirmMessage" class="confirmMessage"></span>
                     </div>
                   </div>
-
                    <div class="modal-footer">
-                <button type="button" class="btn btn-default"
-                        data-dismiss="modal">
-                            CLOSE
+                <button type="button" class="btn btn-default" onclick="window.location.reload()"> CLOSE
+                          
                 </button>
                 <button type="submit" class="btn btn-primary" name="submit">
                     ADD ADMIN
@@ -231,7 +260,7 @@ if(isset($_SESSION['username'])){
             <!-- Modal Header -->
             <div class="modal-header">
                 <button type="button" class="close" 
-                   data-dismiss="modal">
+                   data-dismiss="modal" onclick="window.location.reload()">
                        <span aria-hidden="true">&times;</span>
                        <span class="sr-only">Close</span>
                 </button>
@@ -266,7 +295,7 @@ if(isset($_SESSION['username'])){
                   </div>
                    <div class="modal-footer">
                 <button type="button" class="btn btn-default"
-                        data-dismiss="modal">
+                        data-dismiss="modal" onclick="window.location.reload()">
                             CLOSE
                 </button>
                 <button type="submit" class="btn btn-primary" name="submit">

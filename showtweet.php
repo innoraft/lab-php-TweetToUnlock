@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "dbconnect.php";
 
 $sortingCode = "";
@@ -50,7 +51,7 @@ th{ background-color: #eeeeee; }
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">WELCOME ADMIN</a>
+      <a class="navbar-brand" href="#">WELCOME <?php echo $_SESSION['name'];?></a>
     </div>
     <ul class="nav navbar-nav navbar-right">
     <li class="active"><a href="profile.php"><i class="fa fa-home" aria-hidden="true"></i> HOME</a></li>

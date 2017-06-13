@@ -15,7 +15,7 @@ if(isset($_GET['item_id']))
 <!DOCTYPE html>
 <html>
 <head>
-	<title>eco tweet management</title>
+	<title>ADMIN PORTAL</title>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -171,7 +171,7 @@ fieldset {
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">WELCOME ADMIN</a>
+      <a class="navbar-brand" href="#">WELCOME <?php echo $_SESSION['name'];?></a>
     </div>
     <ul class="nav navbar-nav navbar-right">
     <li class="active"><a href="profile.php"><i class="fa fa-home" aria-hidden="true"></i> HOME</a></li>

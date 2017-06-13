@@ -128,11 +128,6 @@ $(document).ready(function() {
             <a class="hvr-bounce-to-top twitter-btn"><i class="fa fa-twitter twitter-icon" aria-hidden="true" id="tweet_button"></i>Click To Tweet</a>
             </div>
 
-                  <!-- <div id="tweet-button-div">
-						<a class="hvr-bounce-to-top twitter-btn" target="_blank"
-			 			href="https://twitter.com/intent/tweet?text=spread%20the%20words%20&hashtag=<?php echo $hashtag; ?>%20@ecotweet.sites.innoraft.com"
-			  			><i class="fa fa-twitter twitter-icon" aria-hidden="true" id="tweet_button"></i>Click To Tweet</a>
-  					</div> -->
                 </div>
                 <div class="col-sm-5 col-md-5 col-md-offset-1 tree-col">
                   <div class="tree-wrapper">
@@ -141,7 +136,19 @@ $(document).ready(function() {
                    </div>
                 </div>
                  </div>
-                 <div class="tweet-rem" style="text-align: center;"><h4><?php echo ($tweet_req_to_unlock-$total_trees_to_donate_remainder);?> more tweet to unlock</h4></div>
+                 <div class="tweet-rem" style="text-align: center;"><h4>
+                 <?php echo ($tweet_req_to_unlock-$total_trees_to_donate_remainder);
+$current_tree_sql= mysql_query("SELECT image FROM donated_items WHERE donated < (SELECT max(donated) FROM donated_items) ORDER BY item_id ASC LIMIT 1");
+  $row_return= mysql_num_rows($current_tree_sql);
+  
+  if($row_return== 0)
+  {
+    $current_tree_sql= mysql_query("SELECT image FROM donated_items ORDER BY item_id ASC LIMIT 1");
+  }
+  
+  $current_tree= mysql_fetch_array($current_tree_sql);
+  $current_tree_val= $current_tree['image'];
+  ?> more tweet to unlock <img src="<?php echo $current_tree_val;?>" width="110" height="110" style="border-radius:50%; border: 2px solid lightgrey;"></h4></div>
               </div>
 
 
@@ -160,7 +167,7 @@ $(document).ready(function() {
                             $donated_value_array=mysql_query("SELECT * FROM donated_items");
                               while($donated_row = mysql_fetch_array($donated_value_array)){
                                 $count_tree++;
-                                      $donation_array_UI[]= $donated_row['donated'];
+                                      // $donation_array_UI[]= $donated_row['donated'];
                                     ?>
                                     <div class="donated_trees"><h5><?php echo $donated_row['name'];?></h5><img src="<?php echo $donated_row['image'];?>" class="img-responsive"><h4>Donated: <span class="tree_no_<?php echo $count_tree;?>"><?php echo $donated_row['donated'];?></span></h4></div>
                                    <?php
@@ -331,7 +338,7 @@ $(document).ready(function() {
 	<script>
   setInterval(function(){
 	$.post("ajaxcall.php?moreTweetLeft=yes",function(callback){
-		$('.tweet-rem').html('<h4>'+(5-callback[0])+' more tweet to unlock</h4>');
+		$('.tweet-rem').html('<h4>'+(5-callback[0])+' more tweet to unlock <img src="'+callback[4]+'" width="110" height="110" style="border-radius:50%; border: 2px solid lightgrey;"></h4>');
 		var hper = callback[0] * 20;
 		$('#fill-color').css('height',hper+'%');
     $('.count-num').html(callback[3]);

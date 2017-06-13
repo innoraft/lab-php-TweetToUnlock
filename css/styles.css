@@ -1,0 +1,23 @@
+body {
+	font-size: 100%;
+}
+.wrap {
+	width: 500px;
+	margin: 0 auto;
+	text-align: center;
+}
+h2 {
+	margin-top: 0;
+	padding-top: 1em;
+}
+pre {
+	text-align: left;
+}
+.jcpo-plusone-custom1 {
+	padding: 10px;
+	border: 1px solid #F00;
+	width: 200px;
+	margin: 0 auto;
+	background-color: beige;
+	color: blue;
+}
