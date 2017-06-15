@@ -12,6 +12,7 @@ if(!empty($_POST['login']))
 	{
 		$_SESSION['username']= $_POST['loginname'];
 		$_SESSION['name']= $get_name_value;
+		$_SESSION['pass']= $_POST['password'];
 		header('location:profile.php');
 		}
 	else{

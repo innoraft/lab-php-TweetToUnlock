@@ -16,6 +16,8 @@ if(isset($_GET['item_id']))
 <html>
 <head>
 	<title>ADMIN PORTAL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -37,9 +39,6 @@ if(isset($_GET['item_id']))
 
 body {
   font-family: "Oswald";
-  /*font-weight: 100;*/
-  /*font-size: 12px;*/
-  /*line-height: 30px;*/
   color: #777;
   background: #4CAF50;
 }
@@ -150,34 +149,57 @@ fieldset {
 	cursor: pointer;
 }
 
-/*::-webkit-input-placeholder {
-  color: #888;
+.humburger{
+  display: none;
 }
 
-:-moz-placeholder {
-  color: #888;
+@media only screen and (max-width: 767px) {
+  .navbar-right {
+    display: none;
+  }
+  .navbar-header .humburger {
+    float: right;
+    display: block;
+  }
+   .navbar-header .humburger a:visited, a:focus, a:active{
+    text-decoration: none;
+  }
 }
 
-::-moz-placeholder {
-  color: #888;
-}
-
-:-ms-input-placeholder {
-  color: #888;
-}*/
 	</style>
 </head>
+
 <body>
+
+<script>
+function menubar() {
+
+  var x= document.getElementById('navbar-right');
+
+    if(x.style.display=== 'block')
+      {
+        x.style.display= 'none';
+      }
+       else
+      {
+        x.style.display= 'block';
+      }
+}
+</script>
+
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">WELCOME <?php echo $_SESSION['name'];?></a>
+    <div class="navbar-header" id="navbar-header">
+      <a class="navbar-brand" href="#" style="text-transform: uppercase;">WELCOME <?php echo $_SESSION['name'];?></a>
+      <a href="javascript:void(0);" style="font-size: 20px;padding-right: 20px;
+    padding-top: 15px;color: #3e86f1;" class="humburger" onclick="menubar();">&#9776;</a>
     </div>
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right" id="navbar-right">
     <li class="active"><a href="profile.php"><i class="fa fa-home" aria-hidden="true"></i> HOME</a></li>
     <li class="active"><a href="showtree.php"><i class="fa fa-home" aria-hidden="true"></i> SHOW TREES</a></li>
       <li class="active"><a href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> LOGOUT</a></li>
       </ul>
+       
   </div>
 </nav>
 

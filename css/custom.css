@@ -297,6 +297,8 @@ h1{
 .tweet-rem h4::first-letter { 
     font-size: 38px;
     color: #1b95e0;
+    transition: height 0.3s;
+
 }
 
 .tree-wrapper{

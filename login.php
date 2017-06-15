@@ -99,7 +99,7 @@ body{
 										<div class="form-group">
 											<input type="submit" class="btn btn-lg btn-primary btn-block" name="login" value="Sign in">
 										</div>
-										<div class="align-center"><span style="color: red"><?php echo $message;?></span></div>
+										<div class="align-center"><span style="color: red"><?php echo $message;?></span><?php unset($_SESSION['error']); ?> </div>
 									</div>
 								</div>
 							</fieldset>

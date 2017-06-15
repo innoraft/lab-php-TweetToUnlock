@@ -10,6 +10,7 @@ if(isset($_SESSION['admin_exist']))
   alert("EMAIL ALREADY REGISTERED AS ADMIN !!");
 </script>
   <?php
+  unset($_SESSION['admin_exist']);
 }
 ?>
 
@@ -21,8 +22,33 @@ if(isset($_SESSION['admin_added']))
   alert("ADMIN ADDED AND INVITATION MAIL HAS BEEN SENT SUCCESSFULLY");
 </script>
   <?php
+  unset($_SESSION['admin_added']);
 }
 ?>
+
+<?php
+if(isset($_SESSION['pass_change']))
+{
+  ?>
+<script type="text/javascript">
+  alert("PASSWORD HAS BEEN CHANGED!!");
+</script>
+  <?php
+  unset($_SESSION['pass_change']);
+}
+?>
+<?php 
+if(isset($_SESSION['pass_error']))
+{
+  ?>
+<script type="text/javascript">
+  alert("PASSWORD INCORRECT! ERROR OCCURED");
+</script>
+<?php
+unset($_SESSION['pass_error']);
+}
+?>
+
 
 <?php 
 if(isset($_SESSION['username']) && isset($_SESSION['name'])){
@@ -43,6 +69,11 @@ if(isset($_SESSION['username']) && isset($_SESSION['name'])){
   <style>
   body{
   	font-family:"Oswald";
+   /* background-image: url("img/back.jpg");
+    background-size: 1377px 1217px;
+    background-position-y: -304px; 
+    background-repeat: no-repeat;*/
+
   }
   .align-center{
   	text-align: center;
@@ -98,27 +129,51 @@ if(isset($_SESSION['username']) && isset($_SESSION['name'])){
   font-size: 14px;
 }
 
-/*@media only screen and (min-width: 320px) and (max-width: 767px)
-  {
-  	nav ul{
-  		display: none;
-  	}
-    nav ul li{
-      display: none;
-    }
-  } */
+.humburger{
+  display: none;
+}
 
+@media only screen and (max-width: 767px) {
+  .navbar-right {
+    display: none;
+  }
+  .navbar-header .humburger {
+    float: right;
+    display: block;
+  }
+  .navbar-header .humburger a:visited, a:focus, a:active{
+    text-decoration: none;
+  }
+}
   </style>
 </head>
 <body>
 
+<script>
+function menubar() {
+
+  var x= document.getElementById('navbar-right');
+
+    if(x.style.display=== 'block')
+      {
+        x.style.display= 'none';
+      }
+       else
+      {
+        x.style.display= 'block';
+      }
+}
+</script>
+
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <div class="navbar-header">
+    <div class="navbar-header" id="navbar-header">
       <a class="navbar-brand" href="#" style="text-transform: uppercase;">WELCOME <?php echo $_SESSION['name'];?></a>
+       <a href="javascript:void(0);" style="font-size: 20px;padding-right: 20px;padding-top: 9px;color: #3e86f1;" class="humburger" onclick="menubar();">&#9776;</a>
     </div>
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right" id="navbar-right">
     <li class="active"><a href="profile.php"><i class="fa fa-home" aria-hidden="true"></i> HOME</a></li>
+    <li class="active"><a href="#" data-toggle="modal" data-target="#changepass"><i class="fa fa-key" aria-hidden="true"></i> CHANGE PASSWORD</a></li>
       <li class="active"><a href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> LOGOUT</a></li>
 
       </ul>
@@ -136,7 +191,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['name'])){
 
 
 <!-- Button trigger modal -->
-<div class="container">
+<div class="container" style="padding-bottom: 15px;">
 <div class="row align-center">
 <button class="tree-btn hvr-icon-bob bob4" data-toggle="modal" data-target="#AddAdmin" id="add-admin"> 
      ADD ADMIN</button>
@@ -148,7 +203,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['name'])){
      <!-- <span class="tooltiptext">ADD A NEW TREE TO THE DONATION STACK</span> -->
 </div>
 <div class="row align-center">
-<form action="showtree.php" method="post">
+<form action="showtree.php" method="post" style="margin-bottom: 0px;">
 <button class="tree-btn hvr-icon-bob bob2">
      SHOW TREES
 </button>
@@ -171,16 +226,19 @@ if(isset($_SESSION['username']) && isset($_SESSION['name'])){
                 var pass1 = document.getElementById('password');
                 var pass2 = document.getElementById('confirm_password');
                 var message = document.getElementById('confirmMessage');
+                var btn_submit = document.getElementById('add_admin_btn');
                 var goodColor = "#66cc66";
                 var badColor = "#ff6666";
                 if(pass1.value == pass2.value){
                     pass2.style.backgroundColor = goodColor;
                     message.style.color = goodColor;
                     message.innerHTML = "Passwords Match!"
+                    btn_submit.disabled = false;
                 }else{
                     pass2.style.backgroundColor = badColor;
                     message.style.color = badColor;
                     message.innerHTML = "Passwords Do Not Match!"
+                    btn_submit.disabled = true;
                 }
             }  
             </script>
@@ -193,7 +251,9 @@ if(isset($_SESSION['username']) && isset($_SESSION['name'])){
                   $form.find('.pchck').removeClass('.pchck');
             });
             </script> -->
-            
+  
+<!-- add admin modal -->
+
 <div class="modal fade" id="AddAdmin" tabindex="-1" role="dialog" 
      aria-labelledby="AdminLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -242,7 +302,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['name'])){
                 <button type="button" class="btn btn-default" onclick="window.location.reload()"> CLOSE
                           
                 </button>
-                <button type="submit" class="btn btn-primary" name="submit">
+                <button type="submit" class="btn btn-primary" name="submit" id="add_admin_btn">
                     ADD ADMIN
                 </button>
             </div>
@@ -252,7 +312,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['name'])){
     </div>
 </div>
 
-<!-- Modal -->
+<!-- add tree Modal -->
 <div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog" 
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -299,7 +359,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['name'])){
                             CLOSE
                 </button>
                 <button type="submit" class="btn btn-primary" name="submit">
-                    SUBMIT
+                    ADD TREE
                 </button>
             </div>
                     </form>
@@ -308,6 +368,113 @@ if(isset($_SESSION['username']) && isset($_SESSION['name'])){
     </div>
 </div>
 
+<script>
+            function checkPass_change()
+            {
+                var pass1 = document.getElementById('newpassword');
+                var pass2 = document.getElementById('confirm_pass');
+                var message = document.getElementById('confirm_msg');
+                var btn_submit = document.getElementById('pass_change_btn');
+                var goodColor = "#66cc66";
+                var badColor = "#ff6666";
+                if(pass1.value == pass2.value){
+                    pass2.style.backgroundColor = goodColor;
+                    message.style.color = goodColor;
+                    message.innerHTML = "PASSWORDS MATCH!";
+                     btn_submit.disabled = false;
+                }else{
+                    pass2.style.backgroundColor = badColor;
+                    message.style.color = badColor;
+                    message.innerHTML = "PASSWORDS DO NOT MATCH!";
+                     btn_submit.disabled = true;
+                }
+
+            }  
+            </script>
+
+            <script type="text/javascript">
+              
+              function check_oldpass()
+              {
+                var oldpass= document.getElementById('oldpassword');
+                var msg= document.getElementById('oldpassmsg');
+                var goodColor = "#66cc66";
+                var badColor = "#ff6666";
+                var btn_submit = document.getElementById('pass_change_btn');
+                if(oldpass.value != "<?php echo $_SESSION['pass']; ?>")
+                {
+                  oldpass.style.backgroundColor = badColor;
+                    msg.style.color = badColor;
+                  msg.innerHTML = "PASSWORD INCORRECT";
+                  btn_submit.disabled = true;
+                }
+                else
+                {
+                   oldpass.style.backgroundColor = goodColor;
+                    msg.style.color = goodColor;
+                  msg.innerHTML = "CORRECT PASSWORD";
+                  btn_submit.disabled = false;
+                }
+              }
+            </script>
+<!-- change password modal -->
+
+<div class="modal fade" id="changepass" tabindex="-1" role="dialog" 
+     aria-labelledby="change_pass" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" 
+                   data-dismiss="modal" onclick="window.location.reload()">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    CHANGE PASSWORD
+                </h4>
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="modal-body">
+                
+                <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data" action="change_password.php">
+                  <div class="form-group">
+                    <label  class="col-sm-2 control-label">OLD PASSWORD</label>
+                    <div class="col-sm-10">
+                        <input type="password" name="oldpassword" class="form-control" placeholder="ENTER OLD PASSWORD" onkeyup="check_oldpass(); return false;" id="oldpassword" required/>
+                        <span id="oldpassmsg"></span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label"
+                          >NEW PASSWORD</label>
+                    <div class="col-sm-10">
+                         <input type="password" name="newpassword" class="form-control" placeholder="ENTER NEW PASSWORD" id="newpassword" required/>
+                    </div>
+                  </div>
+                   <div class="form-group">
+                    <label class="col-sm-2 control-label"
+                          >CONFIRM PASSWORD</label>
+                    <div class="col-sm-10">
+                         <input type="password" class="form-control pcheck" name="confirm_pass" placeholder="RE-ENTER THE PASSWORD" id="confirm_pass" onkeyup="checkPass_change(); return false;" required>
+                         <span id="confirm_msg" class="confirmMessage"></span>
+                    </div>
+                  </div>
+                   <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal" onclick="window.location.reload()">
+                            CLOSE
+                </button>
+                <button type="submit" class="btn btn-primary" name="submit" id="pass_change_btn">
+                    SUBMIT
+                </button>
+            </div>
+                    </form>
+                  </div>          
+        </div>
+    </div>
+</div>
 
   </body>
 </html>

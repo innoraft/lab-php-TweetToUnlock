@@ -79,7 +79,7 @@
             </div>
           </div>
          
-          <!-- <div class="icon faa-float animated"><i class="fa fa-angle-double-down" id="downbtn"></i></div> -->
+          <div class="icon faa-float animated"><i class="fa fa-angle-double-down" id="downbtn"></i></div>
         </section>
         <!-- page 2-->
 
@@ -131,7 +131,7 @@ $(document).ready(function() {
                 </div>
                 <div class="col-sm-5 col-md-5 col-md-offset-1 tree-col">
                   <div class="tree-wrapper">
-                  <div class="color-fill tree-col" id="fill-color"></div>
+                  <div class="color-fill tree-col" id="fill-color" style="height:<?php echo ((100/$tweet_req_to_unlock) * $total_trees_to_donate_remainder);?>%;"></div>
 			             <img src="img/plant-a-tree.png" class="tree-img img-responsive">
                    </div>
                 </div>
@@ -328,6 +328,10 @@ $current_tree_sql= mysql_query("SELECT image FROM donated_items WHERE donated < 
 
         </div>
     </div>
+
+    <audio id="mysoundclip" preload="auto">
+    <source src="Gum_Bubble_Pop-Sound_Explorer-1206462561.mp3"></source>
+</audio>
     <!-- Javascript files-->
 
     <script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
@@ -335,18 +339,38 @@ $current_tree_sql= mysql_query("SELECT image FROM donated_items WHERE donated < 
     <script src="js/jquery.cookie.js"></script>
     <script src="js/jquery.onepage-scroll.js"></script>
     <script src="js/front.js"></script>
+
 	<script>
+   var audio_newtweet= new Audio("Blop-Mark_DiAngelo-79054334.mp3");
+   var audio_unlock= new Audio("Pop Clip In-SoundBible.com-583746573.mp3");
+  var initial_tweets= "<?php echo $total_tweet_sum; ?>";
+
   setInterval(function(){
 	$.post("ajaxcall.php?moreTweetLeft=yes",function(callback){
-		$('.tweet-rem').html('<h4>'+(5-callback[0])+' more tweet to unlock <img src="'+callback[4]+'" width="110" height="110" style="border-radius:50%; border: 2px solid lightgrey;"></h4>');
-		var hper = callback[0] * 20;
-		$('#fill-color').css('height',hper+'%');
+
+    if(callback[3] > initial_tweets)
+    {
+      $('.tweet-rem').html('<h4>'+(<?php echo $tweet_req_to_unlock;?>-callback[0])+' more tweet to unlock <img src="'+callback[4]+'" width="110" height="110" style="border-radius:50%; border: 2px solid lightgrey;"></h4>');
+
+      audio_newtweet.play();
+    var hper = callback[0] * (100/<?php echo $tweet_req_to_unlock; ?>);
+    $('#fill-color').css('height',hper+'%');
     $('.count-num').html(callback[3]);
     $('.count-num3').html(callback[1]);
     $('.count-num2').html(callback[2]);
+
+    initial_tweets= callback[3];
+    if(callback[0]== 0)
+    {
+      setTimeout(function(){
+      audio_unlock.play();
+      },1000);
+    }
+    }
 	},"json");
-	}, 3000);
+	}, 20000);
 	</script>
+
 
 <!-- tree stack automation -->
   <script>
@@ -358,7 +382,7 @@ $current_tree_sql= mysql_query("SELECT image FROM donated_items WHERE donated < 
     $('.tree_no_'+i).html(donation_callback[i-1]);
   }
   },"json");
-  }, 3000);
+  }, 20000);
   </script>
 
 

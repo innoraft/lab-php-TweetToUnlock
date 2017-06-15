@@ -44,16 +44,51 @@ body{font-size: 14px; line-height: 18px; font-family: "Oswald";}
 #next:hover,#prev:hover{ background-color: #024291; transition-duration: 0.2s; }
 th{ background-color: #eeeeee; }
 #datatable{ font-family: "Montserrat";}
+.humburger{
+  display: none;
+}
+
+@media only screen and (max-width: 767px) {
+  .navbar-right {
+    display: none;
+  }
+  .navbar-header .humburger {
+    float: right;
+    display: block;
+  }
+   .navbar-header .humburger a:visited, a:focus, a:active{
+    text-decoration: none;
+  }
+}
+
     </style>
 </head>
 <body>
-        
+      
+<script>
+function menubar() {
+
+  var x= document.getElementById('navbar-right');
+
+    if(x.style.display=== 'block')
+      {
+        x.style.display= 'none';
+      }
+       else
+      {
+        x.style.display= 'block';
+      }
+}
+</script>
+
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">WELCOME <?php echo $_SESSION['name'];?></a>
+    <div class="navbar-header" id="navbar-header">
+      <a class="navbar-brand" href="#" style="text-transform: uppercase;">WELCOME <?php echo $_SESSION['name'];?></a>
+      <a href="javascript:void(0);" style="font-size: 20px;padding-right: 20px;
+    padding-top: 15px;color: #3e86f1;" class="humburger" onclick="menubar();">&#9776;</a>
     </div>
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right" id="navbar-right">
     <li class="active"><a href="profile.php"><i class="fa fa-home" aria-hidden="true"></i> HOME</a></li>
       <li class="active"><a href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> LOGOUT</a></li>
 
@@ -131,7 +166,7 @@ th{ background-color: #eeeeee; }
     if ($prev >= 0){
     echo '<a href="'.$_SERVER['PHP_SELF'].'?sort_element='.$_GET['sort_element'].'&startrow='.$prev.'&sort_type='.$_GET['sort_type'].'"><button id="prev">PREVIOUS</button></a>';
     }
-    echo '<span style="float:right; padding-right:10%; font-size:18px; margin:10px;">TOTAL CONTRIBUTORS : '.$total_rows.'</span> <span style="float:right;font-size:18px; margin:10px;">TOTAL TWEETS : '.$total_tweets_val.' ,</span>';
+    echo '<span style="float:right; font-size:18px; margin:10px;">TOTAL CONTRIBUTORS : '.$total_rows.'</span><span style="float:right;font-size:18px; margin:10px;">TOTAL TWEETS : '.$total_tweets_val.' </span>';
   ?>
   
 </div>
