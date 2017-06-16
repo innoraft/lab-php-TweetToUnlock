@@ -129,7 +129,8 @@ while($row= mysql_fetch_array($query)){
 	<div class="col-md-9 col-sm-8 col-xs-9">
 		<h2><?php echo $row['name'];?></h2>
 		<h4><?php echo $row['description'];?></h4>
-		<h3 id="donated">Donated: <?php echo $row['donated'];?></h3>
+		<div style="display: inline-block;"><h3 style="margin: 0;">Donated: <?php echo $row['donated'];?></h3>
+    <h4>Added By: <?php echo $row['added_by'];?></h4></div>
 		<div id="buttons">
 				<a href="updateform.php?item_id=<?php echo $row['item_id'];?>"><button id="update" name="update">
 				<i class="fa fa-wrench aria-hidden="true"></i> UPDATE</button></a>
@@ -142,7 +143,7 @@ while($row= mysql_fetch_array($query)){
 <?php $i++;}
 } 
 else{
-	?><h3>NO TREES TO SHOW</h3><?php
+	?><h3 style="text-align: center;">NO TREES TO SHOW</h3><?php
 }
 ?>
 

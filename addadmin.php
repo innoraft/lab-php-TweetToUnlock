@@ -19,16 +19,16 @@ $name = $_POST['name'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-$sql = mysql_query("SELECT * FROM admin WHERE email='".$email."'");
+$sql = mysql_query("SELECT * FROM admin WHERE email_id='".$email."'");
 $s=mysql_num_rows($sql);
 if($s > 0)
 {
 $_SESSION['admin_exist']= "EMAIL ALREADY REGISTERED AS ADMIN !!";
-header('location: profile.php?msg=admin_exists')
+header('location: profile.php?msg=admin_exists');
 }
 else
 {
-$sql = mysql_query("INSERT INTO admin(name,email_id,password) VALUES ('".$name."','".$email."','".md5($password)."')");
+$sql = mysql_query("INSERT INTO admin(name,email_id,password,admin_added_by) VALUES ('".$name."','".$email."','".md5($password)."','".$_SESSION['name']."')");
 
    	$admin= '<html><head><link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet"></head><body><div style="font-family:"Oswald";"><h2>WELCOME TO ECOTWEET !!</h2><h4>YOU HAVE BEEN MADE ADMIN OF ECOTWEET</h4><h4>Your Username is: '.$email.'<br> Your Password is:'.$password.'</h4><div></body></html>';
 

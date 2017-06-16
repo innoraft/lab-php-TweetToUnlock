@@ -67,13 +67,17 @@ if(isset($_SESSION['username']) && isset($_SESSION['name'])){
   <link rel="stylesheet" type="text/css" href="css/hover.css">
 
   <style>
+  
   body{
   	font-family:"Oswald";
-   /* background-image: url("img/back.jpg");
-    background-size: 1377px 1217px;
-    background-position-y: -304px; 
+    min-height: 100vh;
+    /*background-image: url("img/Free Green Hexagon Background Vector  TitanUI.jpg");
+    background-size: cover;
     background-repeat: no-repeat;*/
-
+    /*background-color: #a2c544;*/
+    /*background-color: rgba(227, 245, 113, 0.75);*/
+    background-image: -webkit-linear-gradient(bottom, rgba(120, 196, 7,.64) 0%, rgba(120, 196, 7,0) 100%);
+    /*background-size: cover;*/
   }
   .align-center{
   	text-align: center;
@@ -81,7 +85,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['name'])){
   	padding: 7px 0;
   }
    .align-center img{
-  	background-color: #eeeeee;
+  	background-color: #ffffff;
   	border-radius: 50%;
     width: 150px;
     height: 150px;
@@ -102,9 +106,9 @@ if(isset($_SESSION['username']) && isset($_SESSION['name'])){
 .tree-btn{
 	background-color: #3e86f1;
 	color: white;
-	font-size: 24px;
-	width: 300px;
-	height: 70px;
+	font-size: 20px;
+	width: 280px;
+	height: 60px;
 	text-decoration: none;
 	border-radius: 5px;
 	box-shadow: 0 6px 12px -6px black;
@@ -122,6 +126,9 @@ if(isset($_SESSION['username']) && isset($_SESSION['name'])){
 .bob4:before{
   content: "\f007";
 }
+.bob5:before{
+  content: "\f0c0";
+}
 #welcome-tag{
   margin: 0;
 }
@@ -132,6 +139,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['name'])){
 .humburger{
   display: none;
 }
+
 
 @media only screen and (max-width: 767px) {
   .navbar-right {
@@ -186,7 +194,7 @@ function menubar() {
 </div>
 
 <div class="align-center">
-<h1 id="welcome-tag">WELCOME TO ECO TWEET</h1>
+<h2 id="welcome-tag">WELCOME TO ECO TWEET</h2>
 </div>
 
 
@@ -201,6 +209,13 @@ function menubar() {
 <button class="tree-btn hvr-icon-bob bob1" data-toggle="modal" data-target="#myModalHorizontal" id="add-tree"> 
      ADD TREES</button>
      <!-- <span class="tooltiptext">ADD A NEW TREE TO THE DONATION STACK</span> -->
+</div>
+<div class="row align-center">
+<form action="showadmin.php" method="post" style="margin-bottom: 0px;">
+<button class="tree-btn hvr-icon-bob bob5">
+     SHOW ADMINS
+</button>
+</form>
 </div>
 <div class="row align-center">
 <form action="showtree.php" method="post" style="margin-bottom: 0px;">
