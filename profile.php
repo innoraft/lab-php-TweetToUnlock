@@ -139,7 +139,14 @@ if(isset($_SESSION['username']) && isset($_SESSION['name'])){
 .humburger{
   display: none;
 }
-
+.green{
+      color:green;
+      font-size: 14px;
+    }
+    .red{
+      color:red;
+      font-size: 14px;
+    }
 
 @media only screen and (max-width: 767px) {
   .navbar-right {
@@ -327,6 +334,9 @@ function menubar() {
     </div>
 </div>
 
+
+
+
 <!-- add tree Modal -->
 <div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog" 
      aria-labelledby="myModalLabel" aria-hidden="true">
@@ -362,10 +372,14 @@ function menubar() {
                     </div>
                   </div>
                    <div class="form-group">
+                      
                     <label class="col-sm-2 control-label"
                           >UPLOAD AN IMAGE</label>
                     <div class="col-sm-10">
-                        <input type="file" name="image" id="image" accept="image/*">
+                    <input type="hidden" name="MAX_FILE_SIZE" id="maxSize" value="2097152" />
+                        <input type="file" name="image" id="image" accept="image/*" required>
+                        <p style="margin-top: 5px; color: grey;">[N.B: RECOMMENDED 360 X 360px]</p>
+                        <output id="list"></output>
                     </div>
                   </div>
                    <div class="modal-footer">
@@ -373,7 +387,7 @@ function menubar() {
                         data-dismiss="modal" onclick="window.location.reload()">
                             CLOSE
                 </button>
-                <button type="submit" class="btn btn-primary" name="submit">
+                <button type="submit" class="btn btn-primary" name="submit" id="add_tree">
                     ADD TREE
                 </button>
             </div>
@@ -382,6 +396,68 @@ function menubar() {
         </div>
     </div>
 </div>
+
+<script>
+    allowedExtension = new Array("jpg","jpeg","gif","png","bmp");
+    function validateFile(extension,size)
+    {
+      flag=0;error="";
+      for(i=0;i<allowedExtension.length;i++){
+        if(extension==allowedExtension[i]){
+          maxSize = document.getElementById("maxSize").value
+          if(size<=maxSize)
+            flag=0;
+          else{
+            flag=1;
+            error = "File Size is Bigger";
+          }
+            
+          break;
+        }
+        else{
+          flag=1;
+          error = "File is not Supported";
+        }
+      }
+
+      if(flag!=0)
+      {
+        var btn_disabled = document.getElementById('add_tree');
+        btn_disabled.disabled = true;
+      } 
+      else{
+        var btn_disabled = document.getElementById('add_tree');
+        btn_disabled.disabled = false;
+      }
+      if(flag!=0){
+        return 'red';
+      }
+      else{
+        return 'green';
+      }
+    }
+    // Check for the various File API support.
+    function handleFileSelect(evt) {
+        var files = evt.target.files; // FileList object
+
+        // files is a FileList of File objects. List some properties.
+        f = files[0];
+        ext = f.name.substring(f.name.lastIndexOf('.')+1);
+        size = f.size;
+        classColor = validateFile(ext,size)
+        st = '<li class='+classColor+'><strong>'+f.name+'</strong> ('+f.type +') - '+
+                  f.size+' bytes, last modified: '+
+                  (f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a')+
+                  '</li>';
+        if(error.length>0)
+          st += "<li class="+classColor+">"+error+"</li>";
+          //f.lastModifiedDate.toLocaleDateString()*/
+      document.getElementById('list').innerHTML = '<ul>' + st + '</ul>';
+    }
+    document.getElementById('image').addEventListener('change', handleFileSelect, false);
+  </script>
+
+
 
 <script>
             function checkPass_change()

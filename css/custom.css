@@ -320,6 +320,8 @@ h1{
 }
 .responsive img{
 	border-radius: 100%;
+	/*width: 360px;
+	height: 360px;*/
 
 }
 /*.counter-div .span-text span{
@@ -399,6 +401,10 @@ h1{
 #admin-portal{
 	text-align: center;
 	}
+	/*.responsive img{
+		width: 249px;
+		height: 249px;
+	}*/
 }
 
 @media screen and (max-width:479px) {
