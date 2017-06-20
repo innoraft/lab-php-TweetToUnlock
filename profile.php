@@ -77,6 +77,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['name'])){
     /*background-color: #a2c544;*/
     /*background-color: rgba(227, 245, 113, 0.75);*/
     background-image: -webkit-linear-gradient(bottom, rgba(120, 196, 7,.64) 0%, rgba(120, 196, 7,0) 100%);
+    background-image: -moz-linear-gradient(bottom, rgba(120, 196, 7,.64) 0%, rgba(120, 196, 7,0) 100%);
     /*background-size: cover;*/
   }
   .align-center{

@@ -110,6 +110,7 @@ a:hover{
 	margin-left: 2px;
 	background-color: #a2c544;
 	background-image: -webkit-linear-gradient(bottom, rgba(69,146,183,.54) 0%, rgba(69,146,183,0) 100%);
+	background-image: -moz-linear-gradient(bottom, rgba(69,146,183,.54) 0%, rgba(69,146,183,0) 100%);
 	z-index: -1;
 	bottom: 2px;
 	left: 43px;

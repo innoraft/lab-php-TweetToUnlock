@@ -40,7 +40,9 @@ if(isset($_GET['item_id']))
 body {
   font-family: "Oswald";
   color: #777;
-  background: #4CAF50;
+  background: rgba(76, 175, 80, 0.7);
+  background-image: -webkit-linear-gradient(bottom, rgba(120, 196, 7,.64) 0%, rgba(120, 196, 7,0) 100%);
+    background-image: -moz-linear-gradient(bottom, rgba(120, 196, 7,.64) 0%, rgba(120, 196, 7,0) 100%);
 }
 
 .container {
@@ -137,7 +139,7 @@ fieldset {
 	width: 100px;
 	height: 100px;
 	border-radius: 50%;
-	background-color: #eeeeee;
+	background-color: white;
 	margin:20px;
 }
 .align-center{

@@ -1,9 +1,6 @@
 <?php
-//include "dbconnect.php";
-// include "oauthconnect.php";
  include "index2.php";
- include "variable_credentials.php"
- // include "ajaxcall.php";
+ include "variable_credentials.php";
 ?>
 
 <!DOCTYPE html>
