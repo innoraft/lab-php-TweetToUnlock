@@ -10,13 +10,14 @@ if(isset($_POST['change_pass']))
 	if($update_sql==1)
 	{
 		$_SESSION['update_msg'] = "Password has been changed";
+		unset($_POST['change_pass']);
 	}
 	else
 	{
 		$_SESSION['update_msg_err'] = "Error occured while saving";
+		unset($_POST['change_pass']);
 	}
 }
-unset($_POST['change_pass']);
 ?>
 
 <!DOCTYPE html>
