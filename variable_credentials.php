@@ -13,5 +13,6 @@ $access_token_secret = "a4YPQAIxpYreLFPsdlARIgRnHUpmqHuLl4pLaiFqnOVZd";
 $admin_pass_default= "ayan1234";  //set name,email and password for default admin to login
 $admin_name_default= "AYAN";
 $admin_email_default= "ayan.majumder@innoraft.com";
+$home= "http://akash.com/lab-php-TweetToUnlock";
 date_default_timezone_set('Asia/Kolkata');
 ?>

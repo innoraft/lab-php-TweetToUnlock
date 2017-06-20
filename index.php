@@ -350,7 +350,9 @@ $current_tree_sql= mysql_query("SELECT image FROM donated_items WHERE donated < 
 
     if(callback[3] > initial_tweets)
     {
-      $('.tweet-rem').html('<h4>'+(<?php echo $tweet_req_to_unlock;?>-callback[0])+' more tweet to unlock <img src="'+callback[4]+'" width="110" height="110" style="border-radius:50%; border: 2px solid lightgrey;"></h4>');
+      $.('.tweet-rem').fadeOut(0,function(){
+      $('.tweet-rem').html('<h4>'+(<?php echo $tweet_req_to_unlock;?>-callback[0])+' more tweet to unlock <img src="'+callback[4]+'" width="110" height="110" style="border-radius:50%; border: 2px solid lightgrey;"></h4>').fadeIn();
+    });
 
       audio_newtweet.play();
     var hper = callback[0] * (100/<?php echo $tweet_req_to_unlock; ?>);
@@ -364,9 +366,6 @@ $current_tree_sql= mysql_query("SELECT image FROM donated_items WHERE donated < 
         $(".count-num2").fadeOut(1000,function(){
              $(".count-num2").html(callback[2]).fadeIn(1000);
         }); 
-    // $('.count-num').html(callback[3]).fadeIn("2000");
-    // $('.count-num3').html(callback[1]).fadeIn("2000");
-    // $('.count-num2').html(callback[2]).fadeIn("2000");
 
     initial_tweets= callback[3];
     if(callback[0]== 0)
@@ -377,7 +376,7 @@ $current_tree_sql= mysql_query("SELECT image FROM donated_items WHERE donated < 
     }
     }
 	},"json");
-	}, 20000);
+	}, 5000);
 	</script>
 
 
@@ -391,7 +390,7 @@ $current_tree_sql= mysql_query("SELECT image FROM donated_items WHERE donated < 
     $('.tree_no_'+i).html(donation_callback[i-1]);
   }
   },"json");
-  }, 20000);
+  }, 5000);
   </script>
 
 

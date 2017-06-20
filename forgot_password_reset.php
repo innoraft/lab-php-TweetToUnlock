@@ -1,11 +1,23 @@
-<?php 
+<?php
 include "dbconnect.php";
+include "variable_credentials.php";
 session_start();
-if(isset($_SESSION['error'])) {
-	$message = "INVALID USERNAME / PASSWORD";
-}
-?> 
 
+if(isset($_POST['change_pass']))
+{
+	$get_data = json_decode(base64_decode($_GET['mail']));
+	$update_sql = mysql_query("UPDATE admin SET password = '".md5($_POST['password'])."' WHERE email_id = '".$get_data."'");
+	if($update_sql==1)
+	{
+		$_SESSION['update_msg'] = "Password has been changed";
+	}
+	else
+	{
+		$_SESSION['update_msg_err'] = "Error occured while saving";
+	}
+}
+unset($_POST['change_pass']);
+?>
 
 <!DOCTYPE html>
 <html>
@@ -63,17 +75,40 @@ body{
 }
 </style>
 </head>
+
 <body>
+<script>
+            function checkPass()
+            {
+                var pass1 = document.getElementById('password');
+                var pass2 = document.getElementById('confirm_password');
+                var message = document.getElementById('confirmMessage');
+                var btn_submit = document.getElementById('change_pass');
+                var goodColor = "#66cc66";
+                var badColor = "#ff6666";
+                if(pass1.value == pass2.value){
+                    pass2.style.backgroundColor = goodColor;
+                    message.style.color = goodColor;
+                    message.innerHTML = "Passwords Match!"
+                    btn_submit.disabled = false;
+                }else{
+                    pass2.style.backgroundColor = badColor;
+                    message.style.color = badColor;
+                    message.innerHTML = "Passwords Do Not Match!"
+                    btn_submit.disabled = true;
+                }
+            }  
+            </script>
     <div class="container cont">
     <div class="overlay"></div>
 		<div class="row">
 			<div class="col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 col-xs-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<strong> Sign in to continue</strong>
+						<strong>Reset Your Password</strong>
 					</div>
 					<div class="panel-body">
-						<form role="form" action="logincode.php" method="POST">
+						<form role="form" method="POST">
 							<fieldset>
 								<div class="row">
 									<div class="center-block">
@@ -86,9 +121,9 @@ body{
 										<div class="form-group">
 											<div class="input-group">
 												<span class="input-group-addon">
-													<i class="glyphicon glyphicon-user"></i>
-												</span> 
-												<input class="form-control" placeholder="Email Id" name="loginname" type="email" autofocus required>
+													<i class="glyphicon glyphicon-lock"></i>
+												</span>
+												<input class="form-control" placeholder="Enter New Password" name="password" type="password" id="password" required>
 											</div>
 										</div>
 										<div class="form-group">
@@ -96,67 +131,34 @@ body{
 												<span class="input-group-addon">
 													<i class="glyphicon glyphicon-lock"></i>
 												</span>
-												<input class="form-control" placeholder="Password" name="password" type="password" required>
+												<input class="form-control" placeholder="Re-enter Password" name="confirm_password" id="confirm_password" type="password" onkeyup="checkPass(); return false;" required>
 											</div>
+											<span id="confirmMessage" class="confirmMessage"></span>
 										</div>
 										<div class="form-group">
-											<input type="submit" class="btn btn-lg btn-primary btn-block" name="login" value="Sign in">
+											<input type="submit" class="btn btn-lg btn-primary btn-block" name="change_pass" id="change_pass" value="Save Changes">
 										</div>
-										<div class="align-center"><span style="color: red"><?php echo $message;?></span><?php unset($_SESSION['error']); ?> </div>
+										
 									</div>
-									<div class="align-center">
+									<!-- <div class="align-center">
 									<span style="color:#337ab7;">Forgot Password ? <a data-toggle="modal" data-target="#myModal">Click Here</a></span>
-									</div>
+									</div> -->
 								</div>
 							</fieldset>
 						</form>
 					</div>
 				</div>
-				<?php if(isset($_SESSION['forgot_success'])) { ?>
+				<?php if(isset($_SESSION['update_msg'])) { ?>
 		<div class="alert alert-success alert-dismissable">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  <strong>Success!</strong> <?php echo $_SESSION['forgot_success']; unset($_SESSION['forgot_success']); ?>
+  <strong>Success!</strong> <?php echo $_SESSION['update_msg']; unset($_SESSION['update_msg']); ?>
 </div>
-	<?php } ?>
-
-		<?php if(isset($_SESSION['forgot_error'])) { ?>
+<?php } ?>
+<?php if(isset($_SESSION['update_msg_err'])) { ?>
 		<div class="alert alert-danger alert-dismissable">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  <strong>Sorry!</strong> <?php echo $_SESSION['forgot_error']; unset($_SESSION['forgot_error']);?>
+  <strong>Sorry!</strong> <?php echo $_SESSION['update_msg_err']; unset($_SESSION['update_msg_err']); ?>
 </div>
-	<?php } ?>
-			</div>
+<?php } ?>
 		</div>
-		
-</div>
-
-	<!-- MODAL -->
-	<div id="myModal" class="modal fade" tabindex="-1" role="dialog" 
-     aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Recover Password</h4>
-      </div>
-      <div class="modal-body">
-      <form class="form-horizontal" role="form" method="post" action="validate_forgot.php">
-        <div class="form-group">
-                    <label  class="col-sm-2 control-label">Email Id</label>
-                    <div class="col-sm-10">
-                        <input type="email" name="email_id" class="form-control" placeholder="Enter your registered email id" required/>
-                    </div>
-                  </div>    
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">CLOSE</button>
-        <input type="submit" class="btn btn-primary" value="SUBMIT" name="forgot-password" required />
-      </div>
-    </div>
-    </form>
-  </div>
-</div>
-</body>
-</html>
+		</div>
