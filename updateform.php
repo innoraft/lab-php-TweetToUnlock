@@ -45,6 +45,15 @@ body {
     background-image: -moz-linear-gradient(bottom, rgba(120, 196, 7,.64) 0%, rgba(120, 196, 7,0) 100%);
 }
 
+.green{
+      color:green;
+      font-size: 14px;
+    }
+    .red{
+      color:red;
+      font-size: 14px;
+    }
+
 .container {
   max-width: 400px;
   width: 100%;
@@ -205,6 +214,9 @@ function menubar() {
   </div>
 </nav>
 
+
+
+
 <div class="container"> 
 <div class="align-center">
 <img src="img/eco_logo_1.png"></div>
@@ -219,14 +231,78 @@ function menubar() {
     <fieldset>
       IMAGE: 
       <img src="<?php echo $tree_array['image'];?>" width="50" height="50">
+      <input type="hidden" name="MAX_FILE_SIZE" id="maxSize" value="2097152" />
       <input type="file" name="image_path" id="image_path" accept="image/*">
+      <p style="margin-top: 5px; color: grey;">[N.B: RECOMMENDED 360 X 360px]</p>
+      <output id="list"></output>
     </fieldset>
     <input type="hidden" value="<?php echo $_GET['item_id'];?>" name="hidden_tree">
     <fieldset>
-      <button name="submit" type="submit" id="contact-submit" onclick="return confirm('ARE YOU SURE YOU WANT TO UPDATE?')">SAVE CHANGES</button>
+      <button name="submit" type="submit" id="update-submit" onclick="return confirm('ARE YOU SURE YOU WANT TO UPDATE?')">SAVE CHANGES</button>
     </fieldset>
    
   </form>
 </div>
+
+
+<script>
+    allowedExtension = new Array("jpg","jpeg","gif","png");
+    function validateFile(extension,size)
+    {
+      flag=0;error="";
+      for(i=0;i<allowedExtension.length;i++){
+        if(extension==allowedExtension[i]){
+          maxSize = document.getElementById("maxSize").value
+          if(size<=maxSize)
+            flag=0;
+          else{
+            flag=1;
+            error = "File Size is Bigger";
+          }
+            
+          break;
+        }
+        else{
+          flag=1;
+          error = "File is not Supported";
+        }
+      }
+
+      if(flag!=0)
+      {
+        var btn_disabled = document.getElementById('update-submit');
+        btn_disabled.disabled = true;
+      } 
+      else{
+        var btn_disabled = document.getElementById('update-submit');
+        btn_disabled.disabled = false;
+      }
+      if(flag!=0){
+        return 'red';
+      }
+      else{
+        return 'green';
+      }
+    }
+    // Check for the various File API support.
+    function handleFileSelect(evt) {
+        var files = evt.target.files; // FileList object
+
+        // files is a FileList of File objects. List some properties.
+        f = files[0];
+        ext = f.name.substring(f.name.lastIndexOf('.')+1);
+        size = f.size;
+        classColor = validateFile(ext,size)
+        st = '<li class='+classColor+'><strong>'+f.name+'</strong> ('+f.type +') - '+
+                  f.size+' bytes, last modified: '+
+                  (f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a')+
+                  '</li>';
+        if(error.length>0)
+          st += "<li class="+classColor+">"+error+"</li>";
+          //f.lastModifiedDate.toLocaleDateString()*/
+      document.getElementById('list').innerHTML = '<ul>' + st + '</ul>';
+    }
+    document.getElementById('image_path').addEventListener('change', handleFileSelect, false);
+  </script>
 </body>
 </html>

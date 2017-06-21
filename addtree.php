@@ -3,56 +3,43 @@ include "dbconnect.php";
 session_start();
 if(isset($_POST['submit']))
 {
-    $target= "img/". basename($_FILES['image']['name']);
-    // $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
     $name= $_POST['name'];
     $desc= $_POST['description'];
-    // $uploadOk = 1;
 
-    
-    // list($width,$height)=getimagesize($uploadedfile);
-    // $newwidth= 360;
-    // $newheight= 360;
-    // $tmp=imagecreatetruecolor($newwidth,$newheight);
-    // imagecopyresampled($tmp,$src,0,0,0,0,$newwidth,$newheight,$width,$height);
+    $file = $_FILES['image']['tmp_name']; 
+$source_properties = getimagesize($file);
+$image_type = $source_properties[2]; 
+if( $image_type == IMAGETYPE_JPEG ) {   
+$image_resource_id = imagecreatefromjpeg($file);  
+$target_layer = fn_resize($image_resource_id,$source_properties[0],$source_properties[1]);
+$image_path = "img/".$_FILES['image']['name']."_".rand().".jpg";
+imagejpeg($target_layer,$image_path);
+}
+elseif( $image_type == IMAGETYPE_GIF )  {  
+$image_resource_id = imagecreatefromgif($file);
+$target_layer = fn_resize($image_resource_id,$source_properties[0],$source_properties[1]);
+$image_path = "img/".$_FILES['image']['name']."_".rand().".gif";
+imagegif($target_layer,$image_path);
+}
+elseif( $image_type == IMAGETYPE_PNG ) {
+$image_resource_id = imagecreatefrompng($file); 
+$target_layer = fn_resize($image_resource_id,$source_properties[0],$source_properties[1]);
+$image_path = "img/".$_FILES['image']['name']."_".rand().".png";
+imagepng($target_layer,$image_path);
+}
 
-    // if ($_FILES["image"]["size"] > 5000000) {
-    // header('location: profile.php?msg=SORRY FILE SIZE IS TOO LARGE');
-    // $uploadOk = 0;
-    // }
+    $sql_query= mysql_query("INSERT INTO donated_items(name,description,added_by,image) VALUES('".$name."','".$desc."','".$_SESSION['name']."','".$image_path."')");
 
-    // if($extension=="jpg" || $extension=="jpeg" )
-    // {
-    // $uploadedfile = $_FILES['image']['tmp_name'];
-    // $src = imagecreatefromjpeg($uploadedfile);
-
-    // }
-    // else if($extension=="png")
-    // {
-    // $uploadedfile = $_FILES['image']['tmp_name'];
-    // $src = imagecreatefrompng($uploadedfile);
-
-    // }
-    // else 
-    // {
-    // $src = imagecreatefromgif($uploadedfile);
-    // }
-
-//     if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-// && $imageFileType != "gif" ) {
-//      header('location: profile.php?msg=SORRY ONLY JPG,JPEG,GIF & PNG FILES ARE ALLOWED');
-//     $uploadOk = 0;
-//     }
-    //$image_upload= $_FILES['image']['name'];
-   // else{
-
-    $sql_query= mysql_query("INSERT INTO donated_items(name,description,added_by,image) VALUES('".$name."','".$desc."','".$_SESSION['name']."','".$target."')");
-
-    move_uploaded_file($_FILES['image']['tmp_name'], $target);
     $message="ADDED SUCCESSFULLY!";
     echo "<script type='text/javascript'>alert('$message');</script>";
     header('location:showtree.php');
+}
 
-// }
+function fn_resize($image_resource_id,$width,$height) {
+$target_width =360;
+$target_height =360;
+$target_layer=imagecreatetruecolor($target_width,$target_height);
+imagecopyresampled($target_layer,$image_resource_id,0,0,0,0,$target_width,$target_height, $width,$height);
+return $target_layer;
 }
 ?>

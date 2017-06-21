@@ -399,7 +399,7 @@ function menubar() {
 </div>
 
 <script>
-    allowedExtension = new Array("jpg","jpeg","gif","png","bmp");
+    allowedExtension = new Array("jpg","jpeg","gif","png");
     function validateFile(extension,size)
     {
       flag=0;error="";

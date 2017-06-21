@@ -325,10 +325,6 @@ $current_tree_sql= mysql_query("SELECT image FROM donated_items WHERE donated < 
 
         </div>
     </div>
-
-    <audio id="mysoundclip" preload="auto">
-    <source src="Gum_Bubble_Pop-Sound_Explorer-1206462561.mp3"></source>
-</audio>
     <!-- Javascript files-->
 
     <script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
@@ -347,7 +343,7 @@ $current_tree_sql= mysql_query("SELECT image FROM donated_items WHERE donated < 
 
     if(callback[3] > initial_tweets)
     {
-      $.('.tweet-rem').fadeOut(0,function(){
+      $('.tweet-rem').fadeOut(0,function(){
       $('.tweet-rem').html('<h4>'+(<?php echo $tweet_req_to_unlock;?>-callback[0])+' more tweet to unlock <img src="'+callback[4]+'" width="110" height="110" style="border-radius:50%; border: 2px solid lightgrey;"></h4>').fadeIn();
     });
 
