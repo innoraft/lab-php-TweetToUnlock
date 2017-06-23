@@ -36,7 +36,7 @@ if(isset($_POST['submit'])){
 	}
 
 
-		$update_query= mysql_query("UPDATE donated_items SET name='".$name."', description='".$desc."', image= '".$image_path."' WHERE item_id=".$item_id."");
+		$update_query= mysql_query("UPDATE donated_items SET name='".$name."', description='".$desc."', added_by= '".$_SESSION['name']."', image= '".$image_path."' WHERE item_id=".$item_id."");
 		if($update_query==1)
 		{	
 			header('location:showtree.php?msg=update_successful');
@@ -46,7 +46,7 @@ if(isset($_POST['submit'])){
 		}
 	}
 	else{
-		$update_query= mysql_query("UPDATE donated_items SET name='".$name."',description='".$desc."' WHERE item_id=".$item_id."");
+		$update_query= mysql_query("UPDATE donated_items SET name='".$name."',description='".$desc."', added_by= '".$_SESSION['name']."' WHERE item_id=".$item_id."");
 		if($update_query==1)
 		{
 			header('location:showtree.php?msg=update_successful');
