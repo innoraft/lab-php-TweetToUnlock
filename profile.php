@@ -378,8 +378,8 @@ function menubar() {
                           >UPLOAD AN IMAGE</label>
                     <div class="col-sm-10">
                     <input type="hidden" name="MAX_FILE_SIZE" id="maxSize" value="2097152" />
-                        <input type="file" name="image" id="image" accept="image/*" required>
-                        <p style="margin-top: 5px; color: grey;">[N.B: RECOMMENDED 360 X 360px]</p>
+                        <input type="file" name="image" id="image" accept=".png,.jpg,.jpeg,.gif" required>
+                        <p style="margin-top: 5px; color: grey;">[N.B: ONLY GIF, PNG, JPG FILES < 2MB ARE ALLOWED]</p>
                         <output id="list"></output>
                     </div>
                   </div>
@@ -399,7 +399,7 @@ function menubar() {
 </div>
 
 <script>
-    allowedExtension = new Array("jpg","jpeg","gif","png");
+    allowedExtension = new Array("png","jpg","jpeg","gif");
     function validateFile(extension,size)
     {
       flag=0;error="";
@@ -412,12 +412,11 @@ function menubar() {
             flag=1;
             error = "File Size is Bigger";
           }
-            
           break;
         }
+
         else{
           flag=1;
-          error = "File is not Supported";
         }
       }
 
@@ -425,16 +424,12 @@ function menubar() {
       {
         var btn_disabled = document.getElementById('add_tree');
         btn_disabled.disabled = true;
+         return 'red';
       } 
       else{
         var btn_disabled = document.getElementById('add_tree');
         btn_disabled.disabled = false;
-      }
-      if(flag!=0){
-        return 'red';
-      }
-      else{
-        return 'green';
+          return 'green';
       }
     }
     // Check for the various File API support.
